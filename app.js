@@ -206,8 +206,10 @@ window.App = {
         let html = '<div class="word-card-header"><div>';
         html += `<span class="word-title">${this._esc(w.word)}</span>`;
         if (w.phonetic) html += `<span class="word-phonetic">${this._esc(w.phonetic)}</span>`;
-        if (w.audioUrl) html += `<button class="btn-audio" data-audio="${this._esc(w.audioUrl)}" title="Play pronunciation" aria-label="Play pronunciation">&#x1F50A;</button>`;
-        else html += `<button class="btn-tts" data-text="${this._esc(w.word)}" data-accent="us" title="Listen to pronunciation" aria-label="Listen to pronunciation">&#x1F50A;</button>`;
+        html += `<span class="word-tts-pair">
+            <button class="btn-tts btn-tts-accent" data-text="${this._esc(w.word)}" data-accent="us" title="US pronunciation" aria-label="US pronunciation">&#x1F50A; US</button>
+            <button class="btn-tts btn-tts-accent" data-text="${this._esc(w.word)}" data-accent="uk" title="UK pronunciation" aria-label="UK pronunciation">&#x1F50A; UK</button>
+        </span>`;
         html += '</div>';
         if (showActions) {
             const isLearned = Storage.isLearned(w.word);
@@ -478,50 +480,100 @@ window.App = {
             IDIOMS_DATA.collocations.filter(c => c.category === cat).map(c => `<div class="slang-card"><div class="slang-word">${this._esc(c.words)}</div><div class="slang-meaning">${this._esc(c.meaning)}</div><div class="slang-example">"${this._esc(c.example)}"</div></div>`).join('')).join('');
     },
 
+    // --- Date-based daily rotation helper ---
+    _getDailySubset(arr, count, salt) {
+        const today = new Date();
+        const dateStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+        const indices = [];
+        for (let i = 0; i < count && i < arr.length; i++) {
+            const seed = dateStr + ':' + salt + ':' + i;
+            let hash = 0;
+            for (let j = 0; j < seed.length; j++) { hash = ((hash << 5) - hash) + seed.charCodeAt(j); hash = hash & hash; }
+            let idx = Math.abs(hash) % arr.length;
+            while (indices.includes(idx)) { idx = (idx + 1) % arr.length; }
+            indices.push(idx);
+        }
+        return { items: indices.map(i => arr[i]), dateStr };
+    },
+
+    _renderCompareCard(c) {
+        return `<div class="compare-card">
+            <div class="compare-concept">${this._esc(c.concept)}</div>
+            <div class="compare-grid">
+                <div class="compare-col compare-us"><div class="compare-region">\uD83C\uDDFA\uD83C\uDDF8 American</div>
+                    <div class="compare-terms">${this._esc(c.us.terms)}</div>
+                    <div class="compare-example">"${this._esc(c.us.example)}"</div>
+                    <button class="btn-tts btn-tts-sm" data-text="${this._esc(c.us.example)}" data-accent="us" aria-label="Listen US">&#x1F50A;</button></div>
+                <div class="compare-col compare-uk"><div class="compare-region">\uD83C\uDDEC\uD83C\uDDE7 British</div>
+                    <div class="compare-terms">${this._esc(c.uk.terms)}</div>
+                    <div class="compare-example">"${this._esc(c.uk.example)}"</div>
+                    <button class="btn-tts btn-tts-sm" data-text="${this._esc(c.uk.example)}" data-accent="uk" aria-label="Listen UK">&#x1F50A;</button></div>
+            </div>
+            ${c.note ? `<div class="compare-note">\uD83D\uDCA1 ${this._esc(c.note)}</div>` : ''}
+        </div>`;
+    },
+
     // --- Side-by-Side US vs UK Slang Compare ---
     _renderSlangCompare(container) {
         if (typeof SLANG_DATA === 'undefined' || !SLANG_DATA.slangComparisons) { container.innerHTML = '<p>Loading...</p>'; return; }
-        container.innerHTML = '<div class="compare-intro"><p>Same concept, different slang — see how US and UK express the same ideas!</p></div>' +
-            SLANG_DATA.slangComparisons.map(c => `<div class="compare-card">
-                <div class="compare-concept">${this._esc(c.concept)}</div>
-                <div class="compare-grid">
-                    <div class="compare-col compare-us"><div class="compare-region">\uD83C\uDDFA\uD83C\uDDF8 American</div>
-                        <div class="compare-terms">${this._esc(c.us.terms)}</div>
-                        <div class="compare-example">"${this._esc(c.us.example)}"</div>
-                        <button class="btn-tts btn-tts-sm" data-text="${this._esc(c.us.example)}" data-accent="us" aria-label="Listen US">&#x1F50A;</button></div>
-                    <div class="compare-col compare-uk"><div class="compare-region">\uD83C\uDDEC\uD83C\uDDE7 British</div>
-                        <div class="compare-terms">${this._esc(c.uk.terms)}</div>
-                        <div class="compare-example">"${this._esc(c.uk.example)}"</div>
-                        <button class="btn-tts btn-tts-sm" data-text="${this._esc(c.uk.example)}" data-accent="uk" aria-label="Listen UK">&#x1F50A;</button></div>
-                </div>
-                ${c.note ? `<div class="compare-note">\uD83D\uDCA1 ${this._esc(c.note)}</div>` : ''}
-            </div>`).join('');
+        const all = SLANG_DATA.slangComparisons;
+        const { items: daily } = this._getDailySubset(all, 8, 'compare');
+        const showingAll = container.dataset.showAllCompare === 'true';
+        const displayItems = showingAll ? all : daily;
+
+        container.innerHTML = `<div class="compare-intro"><p>Same concept, different slang — see how US and UK express the same ideas!</p>
+            <div class="daily-rotation-info">Showing ${displayItems.length} of ${all.length} comparisons${showingAll ? '' : ' (today\'s selection)'}</div></div>` +
+            displayItems.map(c => this._renderCompareCard(c)).join('') +
+            `<div style="text-align:center;margin:20px 0;">
+                <button class="btn-show-all" id="compare-toggle">${showingAll ? 'Show Today\'s Selection' : `Show All ${all.length} Comparisons`}</button>
+            </div>`;
         this._attachTTSButtons(container);
+        container.querySelector('#compare-toggle').addEventListener('click', () => {
+            container.dataset.showAllCompare = showingAll ? 'false' : 'true';
+            this._renderSlangCompare(container);
+        });
+    },
+
+    _renderRealTalkCard(ex) {
+        return `<div class="realtalk-card">
+            <div class="realtalk-header">
+                <div class="realtalk-scenario">${this._esc(ex.scenario)}</div>
+                <div class="realtalk-context">${this._esc(ex.context)}</div>
+                <span class="slang-tag">${this._esc(ex.category)}</span>
+            </div>
+            <div class="realtalk-exchanges">${ex.exchanges.map(e => `
+                <div class="realtalk-line ${e.speaker === 'You' ? 'realtalk-you' : 'realtalk-other'}">
+                    <div class="realtalk-speaker">${this._esc(e.speaker)}</div>
+                    <div class="realtalk-bubble">
+                        <div class="realtalk-text">"${this._esc(e.text)}"</div>
+                        <button class="btn-tts btn-tts-sm" data-text="${this._esc(e.text)}" data-accent="us" aria-label="Listen">&#x1F50A;</button>
+                    </div>
+                    ${e.note ? `<div class="realtalk-note">${this._esc(e.note)}</div>` : ''}
+                </div>`).join('')}
+            </div>
+            <div class="realtalk-vocab">${ex.vocabHighlights.map(v => `<span class="realtalk-tag">${this._esc(v)}</span>`).join('')}</div>
+        </div>`;
     },
 
     // --- Real Talk: Everyday Conversation Examples ---
     _renderRealTalk(container) {
         if (typeof SLANG_DATA === 'undefined' || !SLANG_DATA.conversationExamples) { container.innerHTML = '<p>Loading...</p>'; return; }
-        container.innerHTML = '<div class="realtalk-intro"><p>Real sentences you can use in everyday conversations — copy, practice, and sound natural!</p></div>' +
-            SLANG_DATA.conversationExamples.map(ex => `<div class="realtalk-card">
-                <div class="realtalk-header">
-                    <div class="realtalk-scenario">${this._esc(ex.scenario)}</div>
-                    <div class="realtalk-context">${this._esc(ex.context)}</div>
-                    <span class="slang-tag">${this._esc(ex.category)}</span>
-                </div>
-                <div class="realtalk-exchanges">${ex.exchanges.map(e => `
-                    <div class="realtalk-line ${e.speaker === 'You' ? 'realtalk-you' : 'realtalk-other'}">
-                        <div class="realtalk-speaker">${this._esc(e.speaker)}</div>
-                        <div class="realtalk-bubble">
-                            <div class="realtalk-text">"${this._esc(e.text)}"</div>
-                            <button class="btn-tts btn-tts-sm" data-text="${this._esc(e.text)}" data-accent="us" aria-label="Listen">&#x1F50A;</button>
-                        </div>
-                        ${e.note ? `<div class="realtalk-note">${this._esc(e.note)}</div>` : ''}
-                    </div>`).join('')}
-                </div>
-                <div class="realtalk-vocab">${ex.vocabHighlights.map(v => `<span class="realtalk-tag">${this._esc(v)}</span>`).join('')}</div>
-            </div>`).join('');
+        const all = SLANG_DATA.conversationExamples;
+        const { items: daily } = this._getDailySubset(all, 5, 'realtalk');
+        const showingAll = container.dataset.showAllRealtalk === 'true';
+        const displayItems = showingAll ? all : daily;
+
+        container.innerHTML = `<div class="realtalk-intro"><p>Real sentences you can use in everyday conversations — copy, practice, and sound natural!</p>
+            <div class="daily-rotation-info">Showing ${displayItems.length} of ${all.length} conversations${showingAll ? '' : ' (today\'s selection)'}</div></div>` +
+            displayItems.map(ex => this._renderRealTalkCard(ex)).join('') +
+            `<div style="text-align:center;margin:20px 0;">
+                <button class="btn-show-all" id="realtalk-toggle">${showingAll ? 'Show Today\'s Selection' : `Show All ${all.length} Conversations`}</button>
+            </div>`;
         this._attachTTSButtons(container);
+        container.querySelector('#realtalk-toggle').addEventListener('click', () => {
+            container.dataset.showAllRealtalk = showingAll ? 'false' : 'true';
+            this._renderRealTalk(container);
+        });
     },
 
     // --- Daily Challenge (#14) ---

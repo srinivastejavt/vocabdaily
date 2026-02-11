@@ -1,5 +1,5 @@
 // VocabDaily Service Worker — Offline-first caching
-const CACHE_NAME = 'vocabdaily-v4';
+const CACHE_NAME = 'vocabdaily-v5';
 const STATIC_ASSETS = [
     '/',
     '/index.html',

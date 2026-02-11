@@ -1434,6 +1434,13 @@ body {
     transform: scale(1.1);
 }
 
+.word-tts-pair { display: inline-flex; gap: 6px; margin-left: 8px; }
+.btn-tts-accent { border-radius: 16px !important; width: auto !important; padding: 2px 10px !important; font-size: 0.75rem !important; gap: 3px; }
+
+.daily-rotation-info { font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px; }
+.btn-show-all { background: var(--accent); color: #fff; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: opacity .2s; }
+.btn-show-all:hover { opacity: 0.85; }
+
 .btn-tts-sm {
     width: 26px;
     height: 26px;
