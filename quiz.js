@@ -6,10 +6,13 @@ window.QuizEngine = {
     score: 0,
     answered: false,
 
+    answers: [], // Track all answers for review
+
     generate(type, questionCount = 5) {
         this.score = 0;
         this.currentIndex = 0;
         this.answered = false;
+        this.answers = [];
 
         const pool = this._getWordPool(type === 'match' ? questionCount : questionCount * 4);
         let questions;
@@ -46,6 +49,9 @@ window.QuizEngine = {
 
         const correct = answer === q.correctAnswer;
         if (correct) this.score++;
+
+        // Track for review (#9)
+        this.answers.push({ word: q.word, question: q.prompt, yourAnswer: answer, correctAnswer: q.correctAnswer, correct, explanation: q.explanation });
 
         return { correct, correctAnswer: q.correctAnswer, explanation: q.explanation };
     },
@@ -181,7 +187,7 @@ window.QuizEngine = {
             type: 'match',
             prompt: 'Match each word with its correct definition:',
             pairs,
-            shuffledDefs: this._shuffle([...pairs]),
+            shuffledDefs: this._shuffle(pairs.map(p => p.definition)),
             totalPairs: pairs.length
         };
     },
@@ -329,7 +335,7 @@ window.QuizEngine = {
         });
 
         const shuffledWords = this._shuffle([...question.pairs]);
-        const shuffledDefs = this._shuffle([...question.pairs]);
+        const shuffledDefs = question.shuffledDefs || this._shuffle(question.pairs.map(p => p.definition));
 
         let html = `
             <div class="quiz-header">
@@ -347,8 +353,8 @@ window.QuizEngine = {
                     </div>
                     <div class="match-column">
                         <div class="match-column-title">Definitions</div>
-                        ${shuffledDefs.map(p =>
-                            `<div class="match-item match-def" data-def="${this._escapeHtml(p.definition)}">${this._escapeHtml(p.definition)}</div>`
+                        ${shuffledDefs.map(def =>
+                            `<div class="match-item match-def" data-def="${this._escapeHtml(def)}">${this._escapeHtml(def)}</div>`
                         ).join('')}
                     </div>
                 </div>
@@ -415,11 +421,24 @@ window.QuizEngine = {
         const results = this.getResults();
         Storage.recordQuizResult(results.score, results.total);
 
+        // Quiz Review — show wrong answers (#9)
+        const wrongAnswers = this.answers.filter(a => !a.correct);
+        let reviewHTML = '';
+        if (wrongAnswers.length > 0) {
+            reviewHTML = `<div class="quiz-review"><h4>Review — Questions You Missed</h4>` +
+                wrongAnswers.map(a => `<div class="quiz-review-item">
+                    <div class="quiz-review-word">${this._escapeHtml(a.word)}</div>
+                    <div class="quiz-review-wrong">Your answer: <span class="text-error">${this._escapeHtml(a.yourAnswer)}</span></div>
+                    <div class="quiz-review-correct">Correct: <span class="text-success">${this._escapeHtml(a.correctAnswer)}</span></div>
+                </div>`).join('') + '</div>';
+        }
+
         container.innerHTML = `
             <div class="quiz-results">
                 <div class="quiz-results-score">${results.score}/${results.total}</div>
                 <div class="quiz-results-label">${results.percentage}% Correct</div>
                 <p class="quiz-results-message">${results.message}</p>
+                ${reviewHTML}
                 <button class="quiz-back-btn" id="quiz-back">Try Another Quiz</button>
             </div>
         `;
@@ -427,9 +446,11 @@ window.QuizEngine = {
         container.querySelector('#quiz-back').addEventListener('click', () => {
             container.style.display = 'none';
             document.getElementById('quiz-type-selector').style.display = 'grid';
-            // Refresh stats if on stats tab
             if (typeof App !== 'undefined') App.renderStats();
         });
+
+        // Trigger achievement check
+        if (typeof Achievements !== 'undefined') Achievements.checkAndNotify();
     },
 
     // --- Helpers ---

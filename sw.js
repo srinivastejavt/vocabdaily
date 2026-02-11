@@ -1,16 +1,23 @@
 // VocabDaily Service Worker — Offline-first caching
-const CACHE_NAME = 'vocabdaily-v1';
+const CACHE_NAME = 'vocabdaily-v3';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/styles.css',
     '/words.js',
     '/slang.js',
+    '/idioms.js',
     '/storage.js',
     '/api.js',
     '/tts.js',
     '/chat.js',
     '/quiz.js',
+    '/spaced-repetition.js',
+    '/achievements.js',
+    '/search.js',
+    '/voice-input.js',
+    '/daily-challenge.js',
+    '/data-manager.js',
     '/app.js',
     '/manifest.json',
     '/icons/icon-192.png',

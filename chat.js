@@ -237,6 +237,351 @@ window.ChatPractice = {
                 }
             ]
         },
+        // --- NEW US Scenarios ---
+        {
+            id: 'us-roadtrip',
+            title: 'Road Trip Plans',
+            accent: 'us',
+            description: 'Planning an epic road trip with your bestie. Use casual American English!',
+            steps: [
+                {
+                    speaker: 'bestie',
+                    message: "Dude, spring break is coming up. We NEED to do a road trip.",
+                    prompt: "Agree enthusiastically about the trip:",
+                    options: [
+                        { text: "I'm so down! Let's send it. Where should we hit up?", correct: true, feedback: "'I'm down' = I'm in. 'Send it' = go for it/do it. 'Hit up' = visit. Natural excitement!" },
+                        { text: "That would be a lovely vacation opportunity.", correct: false, feedback: "Too formal! Your bestie is hyped — match their energy with 'I'm down' or 'let's go!'" },
+                        { text: "I concur, a vehicular excursion would be delightful.", correct: false, feedback: "Are you a Victorian gentleman? Try 'I'm so down' or 'that sounds fire!'" },
+                        { text: "Ugh, finally! I've been cooped up for ages. Let's do it!", correct: true, feedback: "'Cooped up' = stuck inside. 'Let's do it' = enthusiastic agreement. Great!" }
+                    ]
+                },
+                {
+                    speaker: 'bestie',
+                    message: "What if we drive down the coast? I heard this one beach town is super underrated.",
+                    prompt: "React to the suggestion:",
+                    options: [
+                        { text: "Ooh, a hidden gem? I'm about it. Low-key that sounds perfect.", correct: true, feedback: "'Hidden gem' = undiscovered great place. 'I'm about it' = I like it. 'Low-key' = somewhat/secretly." },
+                        { text: "The coastal route would be a reasonable choice.", correct: false, feedback: "Reasonable? You're planning a fun trip, not a business route! Try 'I'm about it' or 'sounds fire.'" },
+                        { text: "Yesss! Beach vibes all the way. Plus the drive would be scenic af.", correct: true, feedback: "'Vibes' = atmosphere/feeling. 'AF' = as f*** (very). 'Scenic' used casually. Perfect road trip energy!" },
+                        { text: "I have no strong preference regarding the destination.", correct: false, feedback: "Way too neutral! Show some excitement — 'I'm about it!' or 'that sounds fire!'" }
+                    ]
+                },
+                {
+                    speaker: 'bestie',
+                    message: "I already found this sick Airbnb right on the water. It's only like $80 a night split.",
+                    prompt: "React to the deal:",
+                    options: [
+                        { text: "Bro, that's a steal! Book it before someone snags it.", correct: true, feedback: "'A steal' = great deal. 'Snags it' = takes it. Showing urgency — great!" },
+                        { text: "No cap? That's insanely cheap. We're literally winning.", correct: true, feedback: "'No cap' = really? 'Insanely cheap' = very affordable. 'We're winning' = things are going our way!" },
+                        { text: "The pricing seems reasonable for the accommodation.", correct: false, feedback: "Sounds like a hotel review! Try 'that's a steal' or 'no cap that's cheap!'" },
+                        { text: "I shall review the listing before committing.", correct: false, feedback: "You're on a group chat, not signing a lease! Be casual." }
+                    ]
+                },
+                {
+                    speaker: 'bestie',
+                    message: "Bet! I'll book it rn. This trip is gonna be legendary.",
+                    prompt: "Hype up the trip:",
+                    options: [
+                        { text: "LETS GOOOO! I'm already packing. This is gonna hit different.", correct: true, feedback: "'LET'S GO' = pure excitement. 'Hit different' = be uniquely special. Maximum hype!" },
+                        { text: "I anticipate it will be an enjoyable excursion.", correct: false, feedback: "Your friend said 'legendary' and you said 'enjoyable excursion'?! Match the energy!" },
+                        { text: "Can't wait! About to start a countdown. Main character energy this spring break!", correct: true, feedback: "'Main character energy' = living your best life. 'Countdown' = excited anticipation. Perfect!" },
+                        { text: "Acknowledged. I look forward to the journey.", correct: false, feedback: "Sounds like a robot! Try 'LET'S GO' or 'this is gonna be fire!'" }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'us-gym',
+            title: 'Gym Bro Talk',
+            accent: 'us',
+            description: 'Working out with a buddy. Master casual gym and fitness slang!',
+            steps: [
+                {
+                    speaker: 'gym buddy',
+                    message: "Bro, you've been putting in work! Looking jacked lately.",
+                    prompt: "Respond to the compliment humbly:",
+                    options: [
+                        { text: "Thanks, man! Been grinding for like 6 months straight. Finally seeing gains.", correct: true, feedback: "'Grinding' = working hard consistently. 'Gains' = muscle growth/progress. Classic gym talk!" },
+                        { text: "I appreciate the observation regarding my physical development.", correct: false, feedback: "Nobody at the gym talks like that! Say 'thanks bro' and mention your 'gains.'" },
+                        { text: "Nah bro, I still got a long way to go. But I appreciate the hype!", correct: true, feedback: "'Long way to go' = much more to achieve. 'Appreciate the hype' = thanks for the encouragement. Humble and natural!" },
+                        { text: "My exercise routine has produced satisfactory results.", correct: false, feedback: "Way too clinical. Try 'grinding' or talk about your 'gains.'" }
+                    ]
+                },
+                {
+                    speaker: 'gym buddy',
+                    message: "Wanna hit legs today? I've been skipping leg day and it's showing lol.",
+                    prompt: "Agree to a leg workout:",
+                    options: [
+                        { text: "Let's get it! Never skip leg day. We're going heavy today.", correct: true, feedback: "'Let's get it' = let's do this. 'Never skip leg day' = gym commandment. 'Going heavy' = lifting heavy weights." },
+                        { text: "I would be amenable to a lower body workout.", correct: false, feedback: "This is a gym, not a doctor's office! Say 'let's get it' or 'I'm down.'" },
+                        { text: "Bro, say less. Squats and deadlifts — let's go beast mode.", correct: true, feedback: "'Say less' = I'm in. 'Beast mode' = intense workout mode. Perfectly motivating!" },
+                        { text: "I'll consider the proposition after further reflection.", correct: false, feedback: "Your gym buddy's waiting by the squat rack! Just say 'let's get it!'" }
+                    ]
+                },
+                {
+                    speaker: 'gym buddy',
+                    message: "That last set was brutal! I'm gassed. One more?",
+                    prompt: "Push through the last set:",
+                    options: [
+                        { text: "No excuses, bro! One more and we're out. Let's finish strong.", correct: true, feedback: "'No excuses' = keep going. 'We're out' = we'll leave after. 'Finish strong' = end well. Great motivation!" },
+                        { text: "Come on! We didn't come here to be average. Embrace the suck!", correct: true, feedback: "'Embrace the suck' = push through the pain. 'Didn't come here to be average' = classic gym motivation!" },
+                        { text: "I believe we should cease physical activity for today.", correct: false, feedback: "Quitter talk! 😄 Try 'let's finish strong' or 'one more, we got this!'" },
+                        { text: "Perhaps we should consider our physical limitations.", correct: false, feedback: "Your gym bro needs a hype man, not a disclaimer! Push through together." }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'us-gaming',
+            title: 'Online Gaming Session',
+            accent: 'us',
+            description: 'Voice chatting while gaming with the squad. Learn gaming slang!',
+            steps: [
+                {
+                    speaker: 'teammate',
+                    message: "Yo, hop in the party. We need a fourth for ranked.",
+                    prompt: "Join the gaming session:",
+                    options: [
+                        { text: "Gimme two secs, loading in now. What rank are we at?", correct: true, feedback: "'Gimme two secs' = give me a moment. 'Loading in' = joining the game. Natural gaming entry!" },
+                        { text: "I shall connect to the gaming session momentarily.", correct: false, feedback: "Nobody on voice chat talks like that! Try 'loading in' or 'hopping on now.'" },
+                        { text: "On my way! Let's run it. I've been warming up all day.", correct: true, feedback: "'Run it' = let's play. 'Warming up' = practicing beforehand. Showing you're ready!" },
+                        { text: "I accept your invitation to participate in ranked competition.", correct: false, feedback: "This is a chill gaming sesh, not an RSVP! Just say 'on my way' or 'hopping on.'" }
+                    ]
+                },
+                {
+                    speaker: 'teammate',
+                    message: "Watch out! Enemy on your left — HE'S ONE HIT!",
+                    prompt: "React in the heat of gameplay:",
+                    options: [
+                        { text: "Got him! That was a clutch play. Easy clap.", correct: true, feedback: "'Clutch' = great play under pressure. 'Easy clap' = easy win/kill. Classic gaming callout!" },
+                        { text: "I successfully eliminated the opposing player.", correct: false, feedback: "Mid-game comms need to be fast! Try 'got him!' or 'he's down!'" },
+                        { text: "He's down! Nice callout bro. That was clean.", correct: true, feedback: "'He's down' = enemy eliminated. 'Callout' = information shared. 'Clean' = skillful play." },
+                        { text: "The adversary has been neutralized.", correct: false, feedback: "You're playing a game, not running a military operation! Keep it casual." }
+                    ]
+                },
+                {
+                    speaker: 'teammate',
+                    message: "Dude, you're going OFF today! Hard carry for real.",
+                    prompt: "Respond to the compliment:",
+                    options: [
+                        { text: "I'm in the zone today! The lobbies are kinda bot-y though ngl.", correct: true, feedback: "'In the zone' = playing well. 'Bot-y' = easy opponents. 'Ngl' = not gonna lie. Humble brag!" },
+                        { text: "GGs only today. We're built different. Let's keep it rolling.", correct: true, feedback: "'GGs only' = good games. 'Built different' = superior. 'Keep it rolling' = continue playing well." },
+                        { text: "My performance metrics are above average today.", correct: false, feedback: "Lol nobody talks like a stats sheet! Say 'I'm in the zone' or 'GGs only.'" },
+                        { text: "Thank you for acknowledging my gameplay contributions.", correct: false, feedback: "Sounds like a LinkedIn post! Just say 'GGs' or 'I'm cracked today.'" }
+                    ]
+                },
+                {
+                    speaker: 'teammate',
+                    message: "Alright that's a dub! GG everyone. Same time tomorrow?",
+                    prompt: "Wrap up the session:",
+                    options: [
+                        { text: "GG! Yeah I'm down, same time works. Good sesh everyone.", correct: true, feedback: "'GG' = good game. 'Sesh' = session. 'I'm down' = I'm available. Perfect sign-off!" },
+                        { text: "That was fire! Absolutely. We're on a heater — can't stop now.", correct: true, feedback: "'On a heater' = winning streak. 'Can't stop now' = momentum. Confident and fun!" },
+                        { text: "The gaming session has concluded satisfactorily.", correct: false, feedback: "Game over but your vocab is still in formal mode! 'GG' is all you need." },
+                        { text: "I will evaluate my schedule and confirm participation.", correct: false, feedback: "It's a gaming group, not a board meeting! Just say 'yeah I'm down.'" }
+                    ]
+                }
+            ]
+        },
+        // --- NEW UK Scenarios ---
+        {
+            id: 'uk-nightout',
+            title: 'Night Out Plans',
+            accent: 'uk',
+            description: 'Planning a Saturday night out with your British mates. Proper banter!',
+            steps: [
+                {
+                    speaker: 'mate',
+                    message: "Right, what's the plan for tonight then? Fancy going out?",
+                    prompt: "Suggest going out:",
+                    options: [
+                        { text: "Yeah, I'm well up for it! Shall we start at the pub then head into town?", correct: true, feedback: "'Well up for it' = very keen. 'Head into town' = go to the city center. Classic night out plan!" },
+                        { text: "I would like to participate in evening social activities.", correct: false, feedback: "You sound like a social calendar! Try 'I'm up for it' or 'let's have it!'" },
+                        { text: "Go on then! Pre-drinks at mine first? I've got some beers in the fridge.", correct: true, feedback: "'Go on then' = British agreement. 'Pre-drinks at mine' = drinks at my place first. Standard UK pre-game!" },
+                        { text: "I shall consider the proposition carefully.", correct: false, feedback: "Your mates will go without you! Say 'I'm up for it' or 'go on then!'" }
+                    ]
+                },
+                {
+                    speaker: 'mate',
+                    message: "Lovely! I'll text the group. Should we get a taxi or just walk it?",
+                    prompt: "Decide how to get there:",
+                    options: [
+                        { text: "Let's walk it — it's not far and we can save a few quid for drinks.", correct: true, feedback: "'Walk it' = walk there. 'Quid' = pounds (money). Practical and casual!" },
+                        { text: "Can't be arsed walking if it's cold though. Let's split an Uber, innit?", correct: true, feedback: "'Can't be arsed' = can't be bothered. 'Split' = share the cost. 'Innit' = right? Very natural!" },
+                        { text: "I believe pedestrian transportation would be the optimal choice.", correct: false, feedback: "Nobody says that! Just say 'let's walk it' or 'get a taxi.'" },
+                        { text: "The mode of transport is inconsequential.", correct: false, feedback: "You're going on a night out, not writing an essay! Keep it casual." }
+                    ]
+                },
+                {
+                    speaker: 'mate',
+                    message: "Class! Oh, have you heard? That new club on the high street is apparently banging.",
+                    prompt: "React to the club suggestion:",
+                    options: [
+                        { text: "Oh mint! Let's check it out then. As long as we don't have to queue for ages.", correct: true, feedback: "'Mint' = excellent. 'Check it out' = try it. 'Queue for ages' = wait in line for a long time." },
+                        { text: "I've heard it's class! Proper good tunes apparently. Let's give it a go!", correct: true, feedback: "'Class' = great. 'Proper good tunes' = really good music. 'Give it a go' = try it. Spot on!" },
+                        { text: "The establishment sounds like it meets acceptable standards.", correct: false, feedback: "It's a club, not a health inspection! Say 'sounds mint' or 'let's give it a go!'" },
+                        { text: "I am open to exploring the new nightlife venue.", correct: false, feedback: "Too posh for a night out with mates! Try 'mint' or 'sounds banging!'" }
+                    ]
+                },
+                {
+                    speaker: 'mate',
+                    message: "Sorted! Right, I'm gonna start getting ready. Pick you up at 9?",
+                    prompt: "Confirm the plan:",
+                    options: [
+                        { text: "Lovely stuff! See you at 9. It's gonna be a proper good night.", correct: true, feedback: "'Lovely stuff' = great. 'Proper good night' = really good evening. Perfect confirmation!" },
+                        { text: "Cushty! I'll be ready. Don't be late though, you muppet.", correct: true, feedback: "'Cushty' = great/fine. 'Muppet' = playful insult (idiot). Friendly banter!" },
+                        { text: "Confirmed. I will prepare for the evening.", correct: false, feedback: "This is a text to your mate, not a military briefing! Try 'sorted' or 'see you at 9!'" },
+                        { text: "I acknowledge the proposed schedule.", correct: false, feedback: "You sound like a robot secretary! Say 'sorted!' or 'lovely stuff!'" }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'uk-sundayroast',
+            title: 'Sunday Roast',
+            accent: 'uk',
+            description: 'Having a traditional Sunday roast at your nan\'s. Family banter and food chat!',
+            steps: [
+                {
+                    speaker: 'nan',
+                    message: "Come in, love! Dinner's nearly ready. Your uncle Dave's already here — he's been at the biscuit tin already!",
+                    prompt: "Greet your nan:",
+                    options: [
+                        { text: "Alright, Nan! Smells brilliant in here. Uncle Dave never changes, does he?", correct: true, feedback: "'Alright' = greeting. 'Smells brilliant' = smells great. Warm family greeting!" },
+                        { text: "Hello, grandmother. The aroma is most pleasing.", correct: false, feedback: "Nobody talks to their nan like that! Keep it warm and casual." },
+                        { text: "Hiya, Nan! I'm starving. Been looking forward to this all week, honestly.", correct: true, feedback: "'Hiya' = hello (informal). 'Starving' = very hungry. Shows excitement for nan's cooking!" },
+                        { text: "Greetings. I appreciate the culinary effort.", correct: false, feedback: "Your nan would give you a look! Just say 'hiya nan' and tell her you're hungry." }
+                    ]
+                },
+                {
+                    speaker: 'uncle',
+                    message: "Oi oi! Here's trouble. How's work going then? Still at that dodgy office?",
+                    prompt: "Banter back with your uncle:",
+                    options: [
+                        { text: "Cheeky! It's not dodgy, it's just... character building. Could be worse!", correct: true, feedback: "'Cheeky' = playfully rude. 'Character building' = British way of saying it's tough. 'Could be worse' = classic British understatement!" },
+                        { text: "My professional life is proceeding adequately, thank you.", correct: false, feedback: "Uncle Dave wants banter, not a LinkedIn update! Give it some cheek." },
+                        { text: "Yeah yeah, says the bloke who's been 'between jobs' for a year! How's the sofa treating ya?", correct: true, feedback: "'Between jobs' = unemployed (polite way). 'How's the sofa' = teasing about being lazy. Proper family banter!" },
+                        { text: "Employment continues as expected.", correct: false, feedback: "Boring! Your uncle's winding you up — fire back with some banter!" }
+                    ]
+                },
+                {
+                    speaker: 'nan',
+                    message: "Right, grub's up! Get it while it's hot. There's plenty of everything so don't be shy.",
+                    prompt: "Compliment the food:",
+                    options: [
+                        { text: "Nan, this looks absolutely mint! Your Yorkshire puddings are always proper banging.", correct: true, feedback: "'Mint' = excellent. 'Proper banging' = really great. Complimenting nan's Yorkshires — she'll love it!" },
+                        { text: "The presentation of this meal is commendable.", correct: false, feedback: "It's Sunday dinner at nan's, not MasterChef! Just say it looks 'brilliant' or 'mint.'" },
+                        { text: "Looks gorgeous, Nan! You've smashed it as usual. Best roast in the country.", correct: true, feedback: "'Gorgeous' = looks amazing. 'Smashed it' = done an excellent job. Maximum nan-pleasing!" },
+                        { text: "The food appears nutritionally adequate.", correct: false, feedback: "Your nan would clip you round the ear! Compliment her cooking properly." }
+                    ]
+                },
+                {
+                    speaker: 'uncle',
+                    message: "Blimey, I'm absolutely stuffed. Couldn't eat another thing. Well, maybe a bit of pudding...",
+                    prompt: "Agree about being full:",
+                    options: [
+                        { text: "Same! I'm well full but there's always room for pudding. What've you got, Nan?", correct: true, feedback: "'Well full' = very full. 'Always room for pudding' = universal British rule. Perfect!" },
+                        { text: "I have reached maximum food capacity but dessert protocol overrides.", correct: false, feedback: "You sound like a computer! Just say 'I'm stuffed but I'll have pudding!'" },
+                        { text: "Absolutely stuffed an' all! But I'd be daft to say no to Nan's apple crumble.", correct: true, feedback: "'Stuffed an' all' = very full too. 'Daft' = silly/crazy. Apple crumble = classic British pud!" },
+                        { text: "I am sufficiently satiated, thank you.", correct: false, feedback: "Nobody at Sunday dinner says 'satiated!' Say you're 'stuffed' and ask about pudding." }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'uk-train',
+            title: 'Train Delay Rant',
+            accent: 'uk',
+            description: 'British trains are late again. Complain like a proper Brit!',
+            steps: [
+                {
+                    speaker: 'stranger',
+                    message: "Delayed again?! This is the third time this week. Absolute joke.",
+                    prompt: "Bond with a fellow frustrated commuter:",
+                    options: [
+                        { text: "Tell me about it. This lot are having a laugh. Twenty quid for THIS service?", correct: true, feedback: "'Tell me about it' = I totally agree. 'Having a laugh' = must be joking. 'Quid' = pounds. Classic commuter rant!" },
+                        { text: "I share your frustration regarding the public transport infrastructure.", correct: false, feedback: "Way too formal for bonding over train delays! Brits bond through shared complaining." },
+                        { text: "Mate, it's absolutely mental. Every single day. What are we paying for?", correct: true, feedback: "'Mate' = stranger bonding. 'Mental' = crazy. 'What are we paying for' = rhetorical frustration. Perfect!" },
+                        { text: "Delays are a statistical inevitability in any transport system.", correct: false, feedback: "No! You're supposed to COMPLAIN, not rationalize! That's the British way." }
+                    ]
+                },
+                {
+                    speaker: 'stranger',
+                    message: "And they've got the cheek to put the prices up every year. It's a right con.",
+                    prompt: "Continue the shared rant:",
+                    options: [
+                        { text: "It's a shambles, innit? Other countries have proper trains. We're stuck in the dark ages.", correct: true, feedback: "'Shambles' = mess/disaster. 'Dark ages' = behind the times. Peak British transport complaining!" },
+                        { text: "Too right! Daylight robbery, that's what it is. They should be ashamed.", correct: true, feedback: "'Daylight robbery' = overcharging blatantly. Classic British expression for being ripped off!" },
+                        { text: "The pricing model could benefit from optimization.", correct: false, feedback: "You sound like a management consultant! Just say it's 'daylight robbery' or 'a right con.'" },
+                        { text: "I accept the fare increase as a necessary adjustment.", correct: false, feedback: "Traitor! 😄 No Brit accepts fare increases quietly. COMPLAIN!" }
+                    ]
+                },
+                {
+                    speaker: 'stranger',
+                    message: "Oh brilliant, now they're saying it's cancelled. Might as well walk at this rate.",
+                    prompt: "React to the cancellation:",
+                    options: [
+                        { text: "Oh for crying out loud! Right, I'm getting an Uber. Can't be dealing with this.", correct: true, feedback: "'For crying out loud' = frustration. 'Can't be dealing with this' = I've had enough. Natural escalation!" },
+                        { text: "Brilliant. Just brilliant. And they wonder why everyone drives. This country, honestly.", correct: true, feedback: "Using 'brilliant' sarcastically = peak British humor. 'This country, honestly' = quintessential exasperation!" },
+                        { text: "I shall seek alternative transportation arrangements.", correct: false, feedback: "Too calm for a cancelled train! Show some British indignation!" },
+                        { text: "The cancellation is understandable given operational challenges.", correct: false, feedback: "Are you secretly working for the train company?! Get properly annoyed!" }
+                    ]
+                }
+            ]
+        },
+        // --- NEW Mixed Scenarios ---
+        {
+            id: 'mix-firstday',
+            title: 'First Day at Work',
+            accent: 'mix',
+            description: 'Navigating your first day at a new job. Professional but friendly!',
+            steps: [
+                {
+                    speaker: 'colleague',
+                    message: "Hey! You must be the new hire. Welcome to the team! I'm Alex.",
+                    prompt: "Introduce yourself casually:",
+                    options: [
+                        { text: "Hey Alex! Yeah, first day! I'm super excited to be here. Nice to meet you!", correct: true, feedback: "'Super excited' = very enthusiastic. 'Nice to meet you' = standard but warm. Great first impression!" },
+                        { text: "Greetings, fellow employee. I am the recently onboarded staff member.", correct: false, feedback: "You sound like a robot! Be warm and natural — 'hey' and 'nice to meet you' work perfectly." },
+                        { text: "Hi! Yep, that's me! Bit nervous honestly, but everyone seems really sound so far.", correct: true, feedback: "'Bit nervous' = slightly anxious (relatable). 'Sound' = nice/good (Irish/UK). Honest and likeable!" },
+                        { text: "I am present as required for commencement of employment.", correct: false, feedback: "You're meeting a colleague, not filing paperwork! Be friendly and casual." }
+                    ]
+                },
+                {
+                    speaker: 'colleague',
+                    message: "Don't worry, everyone's really chill here. Want me to show you where everything is?",
+                    prompt: "Accept their help gratefully:",
+                    options: [
+                        { text: "That would be amazing, thanks! I'm still getting my bearings. Lead the way!", correct: true, feedback: "'Getting my bearings' = figuring out where things are. 'Lead the way' = you go first. Friendly and grateful!" },
+                        { text: "Please proceed with the facility orientation at your convenience.", correct: false, feedback: "You're talking to a colleague, not writing an email! Say 'that'd be great, thanks!'" },
+                        { text: "Yes please! Honestly I'd probably get lost trying to find the kitchen on my own haha.", correct: true, feedback: "Self-deprecating humor = great way to bond. 'Haha' softens it. Perfect first-day energy!" },
+                        { text: "I am capable of independent navigation.", correct: false, feedback: "Turning down help on your first day? Accept it gracefully!" }
+                    ]
+                },
+                {
+                    speaker: 'colleague',
+                    message: "Here's the kitchen — most important room! The coffee machine is a lifesaver. Friday afternoon people usually bring in treats.",
+                    prompt: "Show you're fitting in:",
+                    options: [
+                        { text: "Good to know! I basically run on caffeine so the coffee machine is key. Friday treats sound amazing too!", correct: true, feedback: "'Run on caffeine' = need coffee to function. 'Key' = essential. Showing personality!" },
+                        { text: "I am a responsible adult who does not require stimulants.", correct: false, feedback: "Way too serious! Everyone jokes about needing coffee at work. Join in!" },
+                        { text: "Oh nice! I'll definitely be living by that coffee machine. And I'm totally bringing brownies next Friday, heads up!", correct: true, feedback: "'Living by' = using constantly. 'Heads up' = advance notice. Already planning to contribute — great attitude!" },
+                        { text: "I will familiarize myself with the kitchen appliances and communal food protocol.", correct: false, feedback: "Lighten up! It's a casual chat about coffee and snacks, not a policy briefing." }
+                    ]
+                },
+                {
+                    speaker: 'colleague',
+                    message: "You're gonna fit right in! If you need anything, don't hesitate to ask. We usually grab lunch together around noon too.",
+                    prompt: "Accept the lunch invite:",
+                    options: [
+                        { text: "I'd love that! Thanks for being so welcoming, seriously. You've made this way less nerve-wracking.", correct: true, feedback: "'Way less nerve-wracking' = much less stressful. Genuine gratitude always lands well!" },
+                        { text: "Sounds great! I'm always down for lunch. Count me in. And thanks, Alex — you're a legend.", correct: true, feedback: "'Down for' = interested in. 'Count me in' = include me. 'Legend' = awesome person. Nailed it!" },
+                        { text: "I will assess whether the lunch opportunity aligns with my dietary schedule.", correct: false, feedback: "Just say yes! 'I'm down' or 'count me in' — don't overcomplicate a lunch invite." },
+                        { text: "Your offer has been noted and will be evaluated.", correct: false, feedback: "You sound like a spam filter! Just say 'sounds great, count me in!'" }
+                    ]
+                }
+            ]
+        },
         // --- Mixed Accent Scenarios ---
         {
             id: 'mix-travel',

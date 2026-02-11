@@ -239,7 +239,7 @@ window.WORD_LIST = [
                 { definition: "A person or group with an interest or concern in something, especially a business.", example: "We need to consider all stakeholders before making this decision." }
             ],
             synonyms: ["shareholder", "participant", "investor", "interested party"],
-            antonyms: []
+            antonyms: ["outsider", "bystander", "uninvolved party"]
         }],
         context: "Business/Corporate. Essential business vocabulary. Used in project management, corporate governance, and any discussion about who is affected by decisions."
     },
@@ -253,7 +253,7 @@ window.WORD_LIST = [
                     { definition: "A standard or point of reference against which things may be compared.", example: "The company's performance serves as a benchmark for the entire industry." }
                 ],
                 synonyms: ["standard", "reference point", "yardstick", "criterion"],
-                antonyms: []
+                antonyms: ["anomaly", "outlier", "deviation"]
             },
             {
                 partOfSpeech: "verb",
@@ -261,7 +261,7 @@ window.WORD_LIST = [
                     { definition: "To evaluate by comparison with a standard.", example: "We benchmarked our customer service against the top competitors." }
                 ],
                 synonyms: ["measure", "evaluate", "compare", "assess"],
-                antonyms: []
+                antonyms: ["guess", "estimate blindly", "ignore"]
             }
         ],
         context: "Business/Technology. Used in performance evaluation, quality assurance, and competitive analysis. Common in tech for testing performance."
@@ -590,7 +590,7 @@ window.WORD_LIST = [
                 { definition: "A short amusing or interesting story about a real incident or person.", example: "He opened his speech with a funny anecdote about his first day at work." }
             ],
             synonyms: ["story", "tale", "narrative", "account"],
-            antonyms: []
+            antonyms: ["fact", "statistic", "data", "evidence"]
         }],
         context: "General. Used in conversations, speeches, and writing. 'Anecdotal evidence' means evidence based on personal stories rather than data."
     },
@@ -932,7 +932,7 @@ window.WORD_LIST = [
                     { definition: "To cause to feel or show prejudice.", example: "Media coverage can bias public opinion on important issues." }
                 ],
                 synonyms: ["influence", "prejudice", "sway", "skew"],
-                antonyms: []
+                antonyms: ["balance", "equalize", "be fair", "be neutral"]
             }
         ],
         context: "General/Academic. Essential in discussions about fairness, research, media, and AI. 'Confirmation bias' and 'unconscious bias' are common phrases."
@@ -956,7 +956,7 @@ window.WORD_LIST = [
                     { definition: "A set of principles concerned with the nature of beauty and art.", example: "The minimalist aesthetic has influenced modern design greatly." }
                 ],
                 synonyms: ["style", "taste", "visual identity"],
-                antonyms: []
+                antonyms: ["eyesore", "ugliness", "tastelessness"]
             }
         ],
         context: "General/Creative. Very popular in social media, design, and art discussions. 'Aesthetic' as a noun describes a particular style or vibe."
@@ -1267,7 +1267,7 @@ window.WORD_LIST = [
                 { definition: "A process or set of rules to be followed in problem-solving, especially by a computer.", example: "Social media algorithms determine what content you see in your feed." }
             ],
             synonyms: ["procedure", "process", "formula", "method"],
-            antonyms: []
+            antonyms: ["guesswork", "intuition", "randomness", "improvisation"]
         }],
         context: "Technology/General. Essential modern vocabulary. Used in tech discussions, social media, and increasingly in everyday conversation."
     },
@@ -1330,7 +1330,7 @@ window.WORD_LIST = [
                     { definition: "A goal or aim.", example: "The main objective of this meeting is to finalize the project timeline." }
                 ],
                 synonyms: ["goal", "aim", "target", "purpose"],
-                antonyms: []
+                antonyms: ["aimlessness", "purposelessness", "distraction"]
             }
         ],
         context: "General/Academic/Business. As an adjective, contrasts with 'subjective'. As a noun, common in business (objectives and key results). Very versatile word."
@@ -2008,5 +2008,879 @@ window.WORD_LIST = [
             antonyms: ["easy", "simple", "encouraging", "manageable"]
         }],
         context: "General. Very common in everyday English. Describes tasks or situations that seem scary or difficult before you start them."
+    },
+    // === Expanded Vocabulary (Batch 2) ===
+    {
+        word: "albeit",
+        phonetic: "/ɔːlˈbiːɪt/",
+        meanings: [{
+            partOfSpeech: "conjunction",
+            definitions: [
+                { definition: "Although; even though.", example: "The restaurant was good, albeit a bit expensive." }
+            ],
+            synonyms: ["although", "even though", "though", "notwithstanding"],
+            antonyms: ["because of", "due to"]
+        }],
+        context: "Formal/Written. Adds sophistication to writing. Used to introduce a contrasting point concisely."
+    },
+    {
+        word: "arbitrary",
+        phonetic: "/ˈɑːrbɪtrɛri/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Based on random choice or personal whim, rather than reason or system.", example: "The selection process seemed completely arbitrary." }
+            ],
+            synonyms: ["random", "capricious", "whimsical", "unpredictable"],
+            antonyms: ["systematic", "reasoned", "logical", "deliberate"]
+        }],
+        context: "Academic/Legal. Common in discussions about fairness, rules, and decision-making. A strong word for criticizing illogical choices."
+    },
+    {
+        word: "candid",
+        phonetic: "/ˈkændɪd/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Truthful and straightforward; frank.", example: "I appreciate your candid feedback about my presentation." },
+                { definition: "(of a photograph) taken informally, without the subject's knowledge.", example: "The best wedding photos are often the candid shots." }
+            ],
+            synonyms: ["frank", "honest", "straightforward", "blunt"],
+            antonyms: ["evasive", "dishonest", "deceptive", "guarded"]
+        }],
+        context: "General. Valued in professional settings. 'Candid conversation' implies honesty, while 'candid photo' means unposed."
+    },
+    {
+        word: "compelling",
+        phonetic: "/kəmˈpɛlɪŋ/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Evoking interest, attention, or admiration in a powerfully irresistible way.", example: "She made a compelling argument for investing in renewable energy." }
+            ],
+            synonyms: ["convincing", "persuasive", "captivating", "riveting"],
+            antonyms: ["boring", "unconvincing", "weak", "dull"]
+        }],
+        context: "General/Professional. High-impact word for essays, reviews, and presentations. 'Compelling evidence', 'compelling story', 'compelling reason'."
+    },
+    {
+        word: "concise",
+        phonetic: "/kənˈsaɪs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Giving a lot of information clearly and in a few words; brief but comprehensive.", example: "Please keep your emails concise — no one reads long paragraphs." }
+            ],
+            synonyms: ["brief", "succinct", "pithy", "terse"],
+            antonyms: ["verbose", "wordy", "long-winded", "rambling"]
+        }],
+        context: "Professional/Academic. A skill employers love. 'Be concise' is common feedback in business communication."
+    },
+    {
+        word: "contemplate",
+        phonetic: "/ˈkɒntɛmpleɪt/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To think about something deeply and at length.", example: "She sat on the beach contemplating her next career move." },
+                { definition: "To consider as a possible course of action.", example: "We're contemplating a move to a bigger city." }
+            ],
+            synonyms: ["ponder", "reflect", "consider", "meditate"],
+            antonyms: ["ignore", "dismiss", "disregard", "neglect"]
+        }],
+        context: "General/Thoughtful. Implies deeper thinking than 'think about'. Often used with life decisions."
+    },
+    {
+        word: "credible",
+        phonetic: "/ˈkrɛdɪbəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Able to be believed; convincing.", example: "Is that news source credible, or is it known for spreading misinformation?" }
+            ],
+            synonyms: ["believable", "trustworthy", "reliable", "plausible"],
+            antonyms: ["unbelievable", "dubious", "unreliable", "implausible"]
+        }],
+        context: "General/Media. Critical in the era of misinformation. 'Credible source', 'credible threat', 'credible witness'."
+    },
+    {
+        word: "deliberate",
+        phonetic: "/dɪˈlɪbərət/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Done consciously and intentionally.", example: "It was a deliberate attempt to mislead the public." }
+            ],
+            synonyms: ["intentional", "planned", "purposeful", "calculated"],
+            antonyms: ["accidental", "unintentional", "spontaneous", "careless"]
+        }],
+        context: "General/Legal. Powerful word distinguishing intentional from accidental actions. Common in law and everyday speech."
+    },
+    {
+        word: "diligent",
+        phonetic: "/ˈdɪlɪdʒənt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Having or showing care and conscientiousness in one's work or duties.", example: "She's the most diligent student in the class — always prepared and on time." }
+            ],
+            synonyms: ["hardworking", "industrious", "meticulous", "thorough"],
+            antonyms: ["lazy", "careless", "negligent", "sloppy"]
+        }],
+        context: "Professional/Academic. A great word for recommendation letters and performance reviews."
+    },
+    {
+        word: "diminish",
+        phonetic: "/dɪˈmɪnɪʃ/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To make or become less; to reduce.", example: "Nothing can diminish her achievements." },
+                { definition: "To make someone or something seem less impressive.", example: "Don't let anyone diminish your accomplishments." }
+            ],
+            synonyms: ["reduce", "decrease", "lessen", "decline"],
+            antonyms: ["increase", "enhance", "amplify", "boost"]
+        }],
+        context: "General. Versatile verb for both physical and abstract reduction. 'Diminishing returns' is a key concept."
+    },
+    {
+        word: "elaborate",
+        phonetic: "/ɪˈlæbərət/",
+        meanings: [
+            {
+                partOfSpeech: "adjective",
+                definitions: [
+                    { definition: "Involving many carefully arranged parts or details; detailed and complicated.", example: "They had an elaborate plan for the surprise party." }
+                ],
+                synonyms: ["complex", "detailed", "intricate", "sophisticated"],
+                antonyms: ["simple", "plain", "basic", "straightforward"]
+            },
+            {
+                partOfSpeech: "verb",
+                definitions: [
+                    { definition: "To develop or present in further detail.", example: "Could you elaborate on that point?" }
+                ],
+                synonyms: ["expand", "explain", "clarify", "develop"],
+                antonyms: ["summarize", "simplify", "condense", "abbreviate"]
+            }
+        ],
+        context: "General. As a verb, 'could you elaborate?' is one of the most useful phrases in meetings and conversations."
+    },
+    {
+        word: "empathy",
+        phonetic: "/ˈɛmpəθi/",
+        meanings: [{
+            partOfSpeech: "noun",
+            definitions: [
+                { definition: "The ability to understand and share the feelings of another.", example: "Good leaders show empathy towards their team members." }
+            ],
+            synonyms: ["compassion", "understanding", "sensitivity", "sympathy"],
+            antonyms: ["indifference", "apathy", "callousness", "coldness"]
+        }],
+        context: "General/Psychology. One of the most important modern vocabulary words. Differs from sympathy — empathy means feeling WITH someone."
+    },
+    {
+        word: "exacerbate",
+        phonetic: "/ɪɡˈzæsərbeɪt/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To make a problem, bad situation, or negative feeling worse.", example: "The drought was exacerbated by record high temperatures." }
+            ],
+            synonyms: ["worsen", "aggravate", "intensify", "compound"],
+            antonyms: ["alleviate", "improve", "mitigate", "relieve"]
+        }],
+        context: "Formal/News. Frequently used in news, medical, and academic contexts. A powerful alternative to 'make worse'."
+    },
+    {
+        word: "feasible",
+        phonetic: "/ˈfiːzɪbəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Possible and practical to do easily or conveniently.", example: "Is it feasible to complete the project by Friday?" }
+            ],
+            synonyms: ["possible", "practical", "viable", "achievable"],
+            antonyms: ["impossible", "impractical", "unfeasible", "unrealistic"]
+        }],
+        context: "Business/Technical. Essential project management word. 'Feasibility study' examines whether a project is worth doing."
+    },
+    {
+        word: "futile",
+        phonetic: "/ˈfjuːtaɪl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Incapable of producing any useful result; pointless.", example: "It's futile to argue with someone who won't listen to reason." }
+            ],
+            synonyms: ["pointless", "useless", "vain", "fruitless"],
+            antonyms: ["useful", "productive", "worthwhile", "effective"]
+        }],
+        context: "General. Stronger than 'useless'. Often used with attempts or efforts that will clearly fail."
+    },
+    {
+        word: "genuine",
+        phonetic: "/ˈdʒɛnjuɪn/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Truly what something is said to be; authentic.", example: "Is this a genuine Picasso or a reproduction?" },
+                { definition: "Sincere and honest.", example: "She's one of the most genuine people I've ever met." }
+            ],
+            synonyms: ["authentic", "real", "sincere", "true"],
+            antonyms: ["fake", "insincere", "phony", "counterfeit"]
+        }],
+        context: "General. Highly valued trait. 'Genuine person' = sincere/honest. 'Genuine article' = the real thing, not a copy."
+    },
+    {
+        word: "hinder",
+        phonetic: "/ˈhɪndər/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To create difficulties for, resulting in delay or obstruction.", example: "Bad weather hindered rescue efforts after the earthquake." }
+            ],
+            synonyms: ["obstruct", "impede", "hamper", "block"],
+            antonyms: ["help", "assist", "facilitate", "aid"]
+        }],
+        context: "General/Formal. Common in news and academic writing. Less dramatic than 'prevent' — implies slowing down, not stopping."
+    },
+    {
+        word: "imminent",
+        phonetic: "/ˈɪmɪnənt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "About to happen; impending.", example: "Dark clouds suggested that a storm was imminent." }
+            ],
+            synonyms: ["impending", "approaching", "forthcoming", "looming"],
+            antonyms: ["distant", "remote", "unlikely", "far-off"]
+        }],
+        context: "General/News. Often confused with 'eminent' (famous). Imminent always means something is about to happen very soon."
+    },
+    {
+        word: "inherent",
+        phonetic: "/ɪnˈhɪərənt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Existing as a natural or permanent part of something.", example: "There is an inherent risk in any investment." }
+            ],
+            synonyms: ["intrinsic", "innate", "built-in", "fundamental"],
+            antonyms: ["external", "acquired", "superficial", "extrinsic"]
+        }],
+        context: "Academic/Professional. Describes qualities that are part of something's nature. 'Inherent risk', 'inherent flaw', 'inherent value'."
+    },
+    {
+        word: "intuitive",
+        phonetic: "/ɪnˈtjuːɪtɪv/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Using or based on what one feels to be true without conscious reasoning.", example: "She has an intuitive understanding of what customers want." },
+                { definition: "(of software) Easy to use and understand.", example: "The app has a really intuitive interface." }
+            ],
+            synonyms: ["instinctive", "natural", "user-friendly", "innate"],
+            antonyms: ["unintuitive", "confusing", "complicated", "learned"]
+        }],
+        context: "General/Tech. Commonly used in tech for UX design. Also describes a natural ability to understand things without explanation."
+    },
+    {
+        word: "leverage",
+        phonetic: "/ˈlɛvərɪdʒ/",
+        meanings: [
+            {
+                partOfSpeech: "noun",
+                definitions: [
+                    { definition: "The power to influence a situation.", example: "Having multiple job offers gives you leverage in salary negotiations." }
+                ],
+                synonyms: ["influence", "power", "advantage", "clout"],
+                antonyms: ["weakness", "disadvantage", "powerlessness"]
+            },
+            {
+                partOfSpeech: "verb",
+                definitions: [
+                    { definition: "To use something to maximum advantage.", example: "We need to leverage our existing customer base to grow revenue." }
+                ],
+                synonyms: ["utilize", "exploit", "capitalize on", "harness"],
+                antonyms: ["waste", "squander", "ignore", "neglect"]
+            }
+        ],
+        context: "Business. One of the most used words in corporate settings. 'Leverage your strengths', 'financial leverage', 'negotiating leverage'."
+    },
+    {
+        word: "lucrative",
+        phonetic: "/ˈluːkrətɪv/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Producing a great deal of profit.", example: "She left her lucrative career in finance to pursue her passion for teaching." }
+            ],
+            synonyms: ["profitable", "rewarding", "money-making", "gainful"],
+            antonyms: ["unprofitable", "unrewarding", "losing"]
+        }],
+        context: "Business/General. Describes jobs, deals, or businesses that make a lot of money. 'Lucrative deal', 'lucrative market'."
+    },
+    {
+        word: "meticulous",
+        phonetic: "/mɪˈtɪkjʊləs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Showing great attention to detail; very careful and precise.", example: "She's meticulous about keeping her workspace organized." }
+            ],
+            synonyms: ["thorough", "careful", "precise", "painstaking"],
+            antonyms: ["careless", "sloppy", "negligent", "hasty"]
+        }],
+        context: "Professional. Excellent for resumes and reviews. Implies a high standard of care and accuracy."
+    },
+    {
+        word: "mitigate",
+        phonetic: "/ˈmɪtɪɡeɪt/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To make less severe, serious, or painful.", example: "Wearing a seatbelt helps mitigate the risk of injury in a car accident." }
+            ],
+            synonyms: ["alleviate", "reduce", "lessen", "ease"],
+            antonyms: ["aggravate", "worsen", "intensify", "exacerbate"]
+        }],
+        context: "Formal/Business. Essential in risk management. 'Mitigate risk', 'mitigating circumstances', 'mitigation strategy'."
+    },
+    {
+        word: "nonchalant",
+        phonetic: "/ˌnɒnʃəˈlɑːnt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Feeling or appearing casually calm and relaxed; not displaying anxiety.", example: "He tried to act nonchalant about the promotion, but inside he was thrilled." }
+            ],
+            synonyms: ["casual", "relaxed", "cool", "indifferent"],
+            antonyms: ["anxious", "concerned", "nervous", "agitated"]
+        }],
+        context: "General. Often implies deliberately appearing calm. 'Playing it nonchalant' means pretending not to care."
+    },
+    {
+        word: "obsolete",
+        phonetic: "/ˌɒbsəˈliːt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "No longer produced or used; out of date.", example: "Smartphones made many older technologies obsolete." }
+            ],
+            synonyms: ["outdated", "outmoded", "antiquated", "defunct"],
+            antonyms: ["current", "modern", "cutting-edge", "state-of-the-art"]
+        }],
+        context: "Technology/General. Very relevant in our fast-changing world. 'Planned obsolescence' is when products are designed to become outdated."
+    },
+    {
+        word: "paramount",
+        phonetic: "/ˈpærəmaʊnt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "More important than anything else; supreme.", example: "Patient safety is of paramount importance in any hospital." }
+            ],
+            synonyms: ["supreme", "chief", "primary", "foremost"],
+            antonyms: ["minor", "insignificant", "trivial", "secondary"]
+        }],
+        context: "Formal. Powerful emphasis word. 'Of paramount importance' is a common phrase in professional and legal settings."
+    },
+    {
+        word: "persevere",
+        phonetic: "/ˌpɜːsɪˈvɪər/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To continue in a course of action even in the face of difficulty.", example: "Despite failing three times, she persevered and finally passed the exam." }
+            ],
+            synonyms: ["persist", "endure", "keep going", "press on"],
+            antonyms: ["quit", "give up", "surrender", "abandon"]
+        }],
+        context: "General/Inspirational. A universally admired quality. 'Perseverance' (noun form) is a common essay and speech topic."
+    },
+    {
+        word: "plausible",
+        phonetic: "/ˈplɔːzɪbəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Seeming reasonable or probable.", example: "His excuse for being late was barely plausible." }
+            ],
+            synonyms: ["believable", "credible", "probable", "reasonable"],
+            antonyms: ["implausible", "unbelievable", "unlikely", "far-fetched"]
+        }],
+        context: "General/Academic. Useful for evaluating arguments and explanations. 'Plausible explanation', 'plausible deniability'."
+    },
+    {
+        word: "precarious",
+        phonetic: "/prɪˈkɛːriəs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Not securely held or in position; dangerously likely to fall or collapse.", example: "The economy is in a precarious state after the pandemic." },
+                { definition: "Dependent on chance; uncertain.", example: "Freelancers often have a precarious income." }
+            ],
+            synonyms: ["unstable", "uncertain", "risky", "insecure"],
+            antonyms: ["stable", "secure", "safe", "certain"]
+        }],
+        context: "General/News. Describes situations that could go wrong at any moment. 'Precarious balance', 'precarious position'."
+    },
+    {
+        word: "profound",
+        phonetic: "/prəˈfaʊnd/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Very great or intense; having deep meaning.", example: "The book had a profound impact on how I think about happiness." }
+            ],
+            synonyms: ["deep", "significant", "intense", "meaningful"],
+            antonyms: ["shallow", "superficial", "trivial", "insignificant"]
+        }],
+        context: "General/Academic. Indicates something deeply meaningful or impactful. 'Profound effect', 'profound wisdom', 'profound change'."
+    },
+    {
+        word: "prolific",
+        phonetic: "/prəˈlɪfɪk/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Producing much fruit, work, or offspring; highly productive.", example: "Picasso was one of the most prolific artists in history, producing over 20,000 works." }
+            ],
+            synonyms: ["productive", "fertile", "creative", "abundant"],
+            antonyms: ["unproductive", "barren", "inactive", "sparse"]
+        }],
+        context: "General/Arts. Often used for artists, writers, and creators who produce a large volume of work."
+    },
+    {
+        word: "quintessential",
+        phonetic: "/ˌkwɪntɪˈsɛnʃəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Representing the most perfect or typical example of a quality or class.", example: "Pizza is the quintessential comfort food." }
+            ],
+            synonyms: ["typical", "classic", "ideal", "definitive"],
+            antonyms: ["atypical", "unusual", "uncharacteristic", "anomalous"]
+        }],
+        context: "General/Literary. A sophisticated way to say 'the perfect example of'. 'Quintessentially British/American' is a common phrase."
+    },
+    {
+        word: "redundant",
+        phonetic: "/rɪˈdʌndənt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Not or no longer needed or useful; superfluous.", example: "The new software made several manual processes redundant." },
+                { definition: "(British) Made unemployed because the job is no longer needed.", example: "He was made redundant when the factory closed down." }
+            ],
+            synonyms: ["superfluous", "unnecessary", "surplus", "excess"],
+            antonyms: ["essential", "necessary", "vital", "indispensable"]
+        }],
+        context: "Business/General. In UK English, 'made redundant' specifically means losing your job. In US English, it means unnecessary."
+    },
+    {
+        word: "scrutinize",
+        phonetic: "/ˈskruːtɪnaɪz/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To examine or inspect closely and thoroughly.", example: "The auditor scrutinized every financial transaction from the past year." }
+            ],
+            synonyms: ["examine", "inspect", "analyze", "investigate"],
+            antonyms: ["glance", "overlook", "ignore", "skim"]
+        }],
+        context: "Formal/Professional. Implies careful, detailed examination. 'Under scrutiny' means being closely watched or examined."
+    },
+    {
+        word: "spontaneous",
+        phonetic: "/spɒnˈteɪniəs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Performed or occurring as a result of a sudden impulse without premeditation.", example: "They went on a spontaneous road trip with no plan at all." }
+            ],
+            synonyms: ["impulsive", "unplanned", "impromptu", "spur-of-the-moment"],
+            antonyms: ["planned", "deliberate", "calculated", "premeditated"]
+        }],
+        context: "General. Often seen as a positive personality trait. 'Spontaneous person', 'spontaneous decision', 'spontaneous combustion'."
+    },
+    {
+        word: "stagnant",
+        phonetic: "/ˈstæɡnənt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Not flowing or moving; showing no activity or development.", example: "Wages have been stagnant for years while the cost of living keeps rising." }
+            ],
+            synonyms: ["static", "dormant", "sluggish", "flat"],
+            antonyms: ["dynamic", "flowing", "growing", "thriving"]
+        }],
+        context: "Business/Economics. Very common in economic discussions. 'Stagnant economy', 'stagnant water', 'career stagnation'."
+    },
+    {
+        word: "subtle",
+        phonetic: "/ˈsʌtəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "So delicate or precise as to be difficult to analyze or describe.", example: "There's a subtle difference between the two shades of blue." },
+                { definition: "Making use of clever and indirect methods to achieve something.", example: "She dropped subtle hints about what she wanted for her birthday." }
+            ],
+            synonyms: ["slight", "delicate", "understated", "nuanced"],
+            antonyms: ["obvious", "blatant", "glaring", "conspicuous"]
+        }],
+        context: "General. Very commonly used. Note the silent 'b'! 'Subtle hint', 'subtle difference', 'subtle flavor'."
+    },
+    {
+        word: "succinct",
+        phonetic: "/səkˈsɪŋkt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Briefly and clearly expressed.", example: "His succinct summary captured all the key points in just two sentences." }
+            ],
+            synonyms: ["concise", "brief", "to the point", "compact"],
+            antonyms: ["verbose", "wordy", "long-winded", "rambling"]
+        }],
+        context: "Professional/Academic. Similar to 'concise'. Valued in business communication and academic writing."
+    },
+    {
+        word: "tangible",
+        phonetic: "/ˈtændʒɪbəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Perceptible by touch; clear and definite; real.", example: "We need to see tangible results before investing more money." }
+            ],
+            synonyms: ["concrete", "real", "solid", "definite"],
+            antonyms: ["intangible", "abstract", "vague", "theoretical"]
+        }],
+        context: "Business/General. 'Tangible results', 'tangible evidence', 'tangible benefits'. Contrasts with 'intangible' (things you can't touch/measure)."
+    },
+    {
+        word: "tenacious",
+        phonetic: "/tɪˈneɪʃəs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Tending to keep a firm hold of something; determined and persistent.", example: "She's a tenacious negotiator who never gives up until she gets a good deal." }
+            ],
+            synonyms: ["persistent", "determined", "relentless", "resolute"],
+            antonyms: ["weak", "irresolute", "yielding", "feeble"]
+        }],
+        context: "General/Positive. Always complimentary. Describes someone who doesn't give up. Great for cover letters and interviews."
+    },
+    {
+        word: "trivial",
+        phonetic: "/ˈtrɪviəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Of little value or importance.", example: "Don't waste time arguing about trivial details." }
+            ],
+            synonyms: ["unimportant", "insignificant", "minor", "petty"],
+            antonyms: ["important", "significant", "major", "crucial"]
+        }],
+        context: "General. 'Trivial matters', 'trivial pursuit'. In programming, 'trivial' means easy/simple. In daily life, it means not worth worrying about."
+    },
+    {
+        word: "unanimous",
+        phonetic: "/juːˈnænɪməs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Fully in agreement; with everyone's consent.", example: "The jury reached a unanimous verdict of not guilty." }
+            ],
+            synonyms: ["united", "agreed", "harmonious", "undivided"],
+            antonyms: ["divided", "split", "opposed", "contentious"]
+        }],
+        context: "Formal/Legal. 'Unanimous decision', 'unanimous vote'. Means 100% agreement — even one dissenter breaks unanimity."
+    },
+    {
+        word: "versatile",
+        phonetic: "/ˈvɜːsətaɪl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Able to adapt or be adapted to many different functions or activities.", example: "She's a versatile actress who can play comedy and drama equally well." }
+            ],
+            synonyms: ["adaptable", "flexible", "all-round", "multi-talented"],
+            antonyms: ["limited", "inflexible", "specialized", "one-dimensional"]
+        }],
+        context: "General/Professional. Great for describing people, tools, or skills. 'Versatile player', 'versatile ingredient'."
+    },
+    {
+        word: "volatile",
+        phonetic: "/ˈvɒlətaɪl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Liable to change rapidly and unpredictably, especially for the worse.", example: "The stock market has been extremely volatile this year." },
+                { definition: "(of a person) Liable to display rapid changes of emotion.", example: "He has a volatile temper — you never know when he'll explode." }
+            ],
+            synonyms: ["unstable", "unpredictable", "turbulent", "erratic"],
+            antonyms: ["stable", "steady", "predictable", "calm"]
+        }],
+        context: "Finance/General. Essential for financial literacy. 'Volatile market', 'volatile relationship', 'volatile situation'."
+    },
+    {
+        word: "wholesome",
+        phonetic: "/ˈhoʊlsəm/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Conducive to or suggestive of good health and physical well-being.", example: "She grew up eating wholesome, home-cooked meals." },
+                { definition: "Morally good and pure; heartwarming.", example: "That video of the dad surprising his daughter was so wholesome." }
+            ],
+            synonyms: ["healthy", "pure", "heartwarming", "uplifting"],
+            antonyms: ["unhealthy", "unwholesome", "corrupt", "toxic"]
+        }],
+        context: "General/Internet. Very popular in modern internet culture. 'Wholesome content', 'wholesome memes'. Describes pure, heartwarming things."
+    },
+    {
+        word: "yield",
+        phonetic: "/jiːld/",
+        meanings: [
+            {
+                partOfSpeech: "verb",
+                definitions: [
+                    { definition: "To produce or provide a result.", example: "The experiment yielded some surprising results." },
+                    { definition: "To give way to pressure; to surrender.", example: "He refused to yield to their demands." }
+                ],
+                synonyms: ["produce", "generate", "surrender", "give way"],
+                antonyms: ["resist", "withhold", "retain", "hold firm"]
+            },
+            {
+                partOfSpeech: "noun",
+                definitions: [
+                    { definition: "The amount produced; return on investment.", example: "This savings account has an annual yield of 4.5%." }
+                ],
+                synonyms: ["return", "output", "profit", "harvest"],
+                antonyms: ["loss", "deficit", "cost"]
+            }
+        ],
+        context: "Business/Agriculture. Very versatile word. Finance: 'bond yield', 'dividend yield'. Driving: 'yield sign'. General: 'yield results'."
+    },
+    {
+        word: "zealous",
+        phonetic: "/ˈzɛləs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Having or showing great energy or enthusiasm in pursuit of a cause.", example: "She's a zealous advocate for animal rights." }
+            ],
+            synonyms: ["passionate", "fervent", "enthusiastic", "devoted"],
+            antonyms: ["apathetic", "indifferent", "unenthusiastic", "passive"]
+        }],
+        context: "Formal. Can be positive or slightly negative depending on context. 'Zealous supporter' = very passionate. 'Overzealous' = too much."
+    },
+    {
+        word: "alleviate",
+        phonetic: "/əˈliːvieɪt/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To make suffering, deficiency, or a problem less severe.", example: "This medicine should help alleviate the pain." }
+            ],
+            synonyms: ["ease", "relieve", "reduce", "soothe"],
+            antonyms: ["aggravate", "worsen", "intensify", "increase"]
+        }],
+        context: "Formal/Medical. More sophisticated than 'reduce'. 'Alleviate poverty', 'alleviate stress', 'alleviate symptoms'."
+    },
+    {
+        word: "benevolent",
+        phonetic: "/bɪˈnɛvələnt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Well meaning and kindly; generous.", example: "A benevolent donor funded the construction of the new library." }
+            ],
+            synonyms: ["kind", "generous", "charitable", "philanthropic"],
+            antonyms: ["malevolent", "cruel", "selfish", "malicious"]
+        }],
+        context: "Formal. Opposite of 'malevolent'. 'Benevolent dictator' (tech term), 'benevolent fund', 'benevolent smile'."
+    },
+    {
+        word: "cognizant",
+        phonetic: "/ˈkɒɡnɪzənt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Having knowledge or being aware of something.", example: "We are cognizant of the risks involved in this venture." }
+            ],
+            synonyms: ["aware", "conscious", "mindful", "informed"],
+            antonyms: ["unaware", "ignorant", "oblivious", "unconscious"]
+        }],
+        context: "Formal/Professional. A sophisticated alternative to 'aware of'. Common in legal and corporate communication."
+    },
+    {
+        word: "conundrum",
+        phonetic: "/kəˈnʌndrəm/",
+        meanings: [{
+            partOfSpeech: "noun",
+            definitions: [
+                { definition: "A confusing and difficult problem or question.", example: "The housing crisis is a conundrum with no easy solution." }
+            ],
+            synonyms: ["puzzle", "dilemma", "riddle", "quandary"],
+            antonyms: ["solution", "answer", "resolution", "certainty"]
+        }],
+        context: "General. More interesting than 'problem'. Often used for complex situations where no solution is obvious."
+    },
+    {
+        word: "detrimental",
+        phonetic: "/ˌdɛtrɪˈmɛntəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Tending to cause harm.", example: "Excessive screen time can be detrimental to children's development." }
+            ],
+            synonyms: ["harmful", "damaging", "injurious", "destructive"],
+            antonyms: ["beneficial", "helpful", "advantageous", "constructive"]
+        }],
+        context: "Formal/Academic. Stronger than 'bad for'. 'Detrimental effects', 'detrimental to health'. Common in health and policy discussions."
+    },
+    {
+        word: "exemplary",
+        phonetic: "/ɪɡˈzɛmpləri/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Serving as a desirable model; representing the best of its kind.", example: "Her exemplary work ethic earned her a promotion within six months." }
+            ],
+            synonyms: ["outstanding", "excellent", "model", "ideal"],
+            antonyms: ["terrible", "poor", "deplorable", "substandard"]
+        }],
+        context: "Formal/Professional. The ultimate compliment in professional settings. 'Exemplary performance', 'exemplary behavior'."
+    },
+    {
+        word: "frugal",
+        phonetic: "/ˈfruːɡəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Sparing or economical with regard to money or food.", example: "Living a frugal lifestyle allowed her to retire at 45." }
+            ],
+            synonyms: ["thrifty", "economical", "careful", "prudent"],
+            antonyms: ["wasteful", "extravagant", "lavish", "spendthrift"]
+        }],
+        context: "General/Finance. Positive connotation — implies smart with money, not 'cheap'. Popular in FIRE (Financial Independence, Retire Early) movement."
+    },
+    {
+        word: "gregarious",
+        phonetic: "/ɡrɪˈɡɛːriəs/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Fond of company; sociable.", example: "He's a gregarious person who makes friends wherever he goes." }
+            ],
+            synonyms: ["sociable", "outgoing", "friendly", "extroverted"],
+            antonyms: ["introverted", "reserved", "reclusive", "antisocial"]
+        }],
+        context: "General/Personality. A beautiful word for describing extroverts. Much more elegant than 'outgoing'."
+    },
+    {
+        word: "juxtapose",
+        phonetic: "/ˈdʒʌkstəpəʊz/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To place close together for contrasting effect.", example: "The documentary juxtaposes scenes of extreme wealth with scenes of poverty." }
+            ],
+            synonyms: ["contrast", "compare", "set side by side", "place alongside"],
+            antonyms: ["separate", "isolate", "distance", "detach"]
+        }],
+        context: "Academic/Arts. Common in art criticism, literature, and film analysis. Makes you sound analytical and sophisticated."
+    },
+    {
+        word: "mundane",
+        phonetic: "/mʌnˈdeɪn/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Lacking interest or excitement; dull.", example: "She wanted to escape the mundane routine of office life." }
+            ],
+            synonyms: ["boring", "dull", "tedious", "humdrum"],
+            antonyms: ["exciting", "extraordinary", "fascinating", "thrilling"]
+        }],
+        context: "General. Originally meant 'worldly' (vs spiritual), now means everyday/boring. 'Mundane tasks', 'mundane routine'."
+    },
+    {
+        word: "notoriously",
+        phonetic: "/nəˈtɔːriəsli/",
+        meanings: [{
+            partOfSpeech: "adverb",
+            definitions: [
+                { definition: "In a way that is famous or well known, typically for some bad quality.", example: "That intersection is notoriously dangerous." }
+            ],
+            synonyms: ["infamously", "famously", "widely known as"],
+            antonyms: ["obscurely", "anonymously", "privately"]
+        }],
+        context: "General/News. Almost always used for negative fame. 'Notoriously difficult', 'notoriously unreliable', 'notoriously late'."
+    },
+    {
+        word: "prevalent",
+        phonetic: "/ˈprɛvələnt/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Widespread in a particular area or at a particular time.", example: "Cyberbullying has become increasingly prevalent among teenagers." }
+            ],
+            synonyms: ["widespread", "common", "pervasive", "frequent"],
+            antonyms: ["rare", "uncommon", "infrequent", "unusual"]
+        }],
+        context: "Formal/Academic. Common in research and news. 'Prevalent in society', 'most prevalent disease', 'increasingly prevalent'."
+    },
+    {
+        word: "reciprocal",
+        phonetic: "/rɪˈsɪprəkəl/",
+        meanings: [{
+            partOfSpeech: "adjective",
+            definitions: [
+                { definition: "Given, felt, or done in return; mutual.", example: "A strong friendship requires reciprocal respect and trust." }
+            ],
+            synonyms: ["mutual", "shared", "corresponding", "equivalent"],
+            antonyms: ["one-sided", "unilateral", "unreciprocated"]
+        }],
+        context: "Formal/Relationship. 'Reciprocal relationship', 'reciprocal agreement'. Implies both sides give and receive equally."
+    },
+    {
+        word: "repercussion",
+        phonetic: "/ˌriːpərˈkʌʃən/",
+        meanings: [{
+            partOfSpeech: "noun",
+            definitions: [
+                { definition: "An unintended consequence of an event or action, especially an unwelcome one.", example: "The scandal had serious repercussions for the entire company." }
+            ],
+            synonyms: ["consequence", "aftermath", "fallout", "backlash"],
+            antonyms: ["cause", "origin", "source"]
+        }],
+        context: "General/News. Almost always implies negative consequences. 'Face repercussions', 'serious repercussions', 'political repercussions'."
+    },
+    {
+        word: "serendipity",
+        phonetic: "/ˌsɛrənˈdɪpɪti/",
+        meanings: [{
+            partOfSpeech: "noun",
+            definitions: [
+                { definition: "The occurrence of events by chance in a happy or beneficial way.", example: "Meeting my best friend at a random coffee shop was pure serendipity." }
+            ],
+            synonyms: ["luck", "fortune", "chance", "happy accident"],
+            antonyms: ["misfortune", "bad luck", "design", "planning"]
+        }],
+        context: "General/Literary. One of the most beautiful words in English. Coined from a Persian fairy tale. Often voted people's favorite word."
+    },
+    {
+        word: "vindicate",
+        phonetic: "/ˈvɪndɪkeɪt/",
+        meanings: [{
+            partOfSpeech: "verb",
+            definitions: [
+                { definition: "To clear of blame or suspicion; to prove to be right.", example: "The new evidence vindicated the defendant completely." }
+            ],
+            synonyms: ["exonerate", "justify", "absolve", "prove right"],
+            antonyms: ["blame", "convict", "incriminate", "condemn"]
+        }],
+        context: "Legal/General. Powerful word for when someone is proven right after being doubted. 'Feel vindicated', 'vindicated by evidence'."
     }
 ];

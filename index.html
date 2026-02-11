@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VocabDaily — Learn 5 New Words Every Day</title>
-
-    <!-- PWA Meta Tags -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6c5ce7">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,11 +11,9 @@
     <meta name="apple-mobile-web-app-title" content="VocabDaily">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <meta name="description" content="Learn 5 new English vocabulary words every day with definitions, examples, quizzes, UK/US slang, and pronunciation.">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="app-header">
         <div class="header-content">
             <div class="header-left">
@@ -25,6 +21,7 @@
                 <span class="app-subtitle">5 words a day</span>
             </div>
             <div class="header-right">
+                <button class="btn-icon" id="search-btn" title="Search (Ctrl+K)" aria-label="Search">&#128269;</button>
                 <div class="streak-badge" id="streak-badge" title="Daily streak">
                     <span class="streak-icon">&#x1F525;</span>
                     <span class="streak-count" id="streak-count">0</span>
@@ -35,65 +32,34 @@
             </div>
         </div>
     </header>
-
-    <!-- Navigation Tabs -->
-    <nav class="tab-nav">
-        <button class="tab-btn active" data-tab="wotd">Today's Words</button>
-        <button class="tab-btn" data-tab="practice">Practice</button>
-        <button class="tab-btn" data-tab="ukus">UK vs US</button>
-        <button class="tab-btn" data-tab="chatpractice">Chat Practice</button>
-        <button class="tab-btn" data-tab="mywords">My Words</button>
-        <button class="tab-btn" data-tab="stats">Stats</button>
+    <nav class="tab-nav" role="tablist">
+        <button class="tab-btn active" data-tab="wotd" role="tab">Today's Words</button>
+        <button class="tab-btn" data-tab="practice" role="tab">Practice</button>
+        <button class="tab-btn" data-tab="ukus" role="tab">UK vs US</button>
+        <button class="tab-btn" data-tab="chatpractice" role="tab">Chat</button>
+        <button class="tab-btn" data-tab="challenge" role="tab">Challenge</button>
+        <button class="tab-btn" data-tab="mywords" role="tab">My Words</button>
+        <button class="tab-btn" data-tab="stats" role="tab">Stats</button>
+        <button class="tab-btn" data-tab="settings" role="tab">Settings</button>
     </nav>
-
-    <!-- Main Content -->
     <main class="content">
-
-        <!-- === Today's Words Section === -->
-        <section id="wotd" class="tab-section active">
-            <div class="section-header">
-                <h2>Today's Words</h2>
-                <p class="section-desc" id="wotd-date"></p>
-            </div>
-            <div id="wotd-loading" class="loading-state">
-                <div class="spinner"></div>
-                <p>Loading today's words...</p>
-            </div>
+        <section id="wotd" class="tab-section active" role="tabpanel">
+            <div class="section-header"><h2>Today's Words</h2><p class="section-desc" id="wotd-date"></p></div>
+            <div id="wotd-loading" class="loading-state"><div class="spinner"></div><p>Loading today's words...</p></div>
             <div id="wotd-cards" class="word-cards-grid"></div>
         </section>
-
-        <!-- === Practice Section === -->
-        <section id="practice" class="tab-section">
-            <div class="section-header">
-                <h2>Practice</h2>
-                <p class="section-desc">Test your vocabulary knowledge</p>
-            </div>
+        <section id="practice" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Practice</h2><p class="section-desc">Test your vocabulary knowledge</p></div>
+            <div id="srs-review-area" style="margin-bottom:20px;"></div>
             <div id="quiz-type-selector" class="quiz-type-selector">
-                <button class="quiz-type-btn" data-quiz="multiple-choice">
-                    <span class="quiz-type-icon">&#x2753;</span>
-                    <span class="quiz-type-label">Multiple Choice</span>
-                    <span class="quiz-type-desc">Pick the correct definition</span>
-                </button>
-                <button class="quiz-type-btn" data-quiz="fill-blank">
-                    <span class="quiz-type-icon">&#x270D;&#xFE0F;</span>
-                    <span class="quiz-type-label">Fill in the Blank</span>
-                    <span class="quiz-type-desc">Complete the sentence</span>
-                </button>
-                <button class="quiz-type-btn" data-quiz="match">
-                    <span class="quiz-type-icon">&#x1F517;</span>
-                    <span class="quiz-type-label">Match Words</span>
-                    <span class="quiz-type-desc">Connect words to meanings</span>
-                </button>
+                <button class="quiz-type-btn" data-quiz="multiple-choice"><span class="quiz-type-icon">&#x2753;</span><span class="quiz-type-label">Multiple Choice</span><span class="quiz-type-desc">Pick the correct definition</span></button>
+                <button class="quiz-type-btn" data-quiz="fill-blank"><span class="quiz-type-icon">&#x270D;&#xFE0F;</span><span class="quiz-type-label">Fill in the Blank</span><span class="quiz-type-desc">Complete the sentence</span></button>
+                <button class="quiz-type-btn" data-quiz="match"><span class="quiz-type-icon">&#x1F517;</span><span class="quiz-type-label">Match Words</span><span class="quiz-type-desc">Connect words to meanings</span></button>
             </div>
             <div id="quiz-container" class="quiz-container" style="display:none;"></div>
         </section>
-
-        <!-- === UK vs US English Section === -->
-        <section id="ukus" class="tab-section">
-            <div class="section-header">
-                <h2>UK vs US English</h2>
-                <p class="section-desc">Slang, vocabulary, spelling &amp; accent differences</p>
-            </div>
+        <section id="ukus" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>UK vs US English</h2><p class="section-desc">Slang, vocabulary, idioms &amp; accent differences</p></div>
             <div class="ukus-sub-tabs sub-tabs">
                 <button class="ukus-sub-btn sub-tab-btn active" data-ukus-tab="us-slang">US Slang</button>
                 <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="uk-slang">UK Slang</button>
@@ -101,103 +67,78 @@
                 <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="spelling-diff">Spelling</button>
                 <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="accent-guide">Accents</button>
                 <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="phrases">Phrases</button>
+                <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="idioms">Idioms</button>
+                <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="phrasal">Phrasal Verbs</button>
+                <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="collocations">Collocations</button>
+                <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="compare">Compare</button>
+                <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="realtalk">Real Talk</button>
             </div>
             <div id="ukus-content" class="ukus-content"></div>
         </section>
-
-        <!-- === Chat Practice Section === -->
-        <section id="chatpractice" class="tab-section">
-            <div class="section-header">
-                <h2>Chat Practice</h2>
-                <p class="section-desc">Practice using slang in real conversations</p>
-            </div>
+        <section id="chatpractice" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Chat Practice</h2><p class="section-desc">Practice using slang in real conversations</p></div>
             <div id="chat-container"></div>
         </section>
-
-        <!-- === My Words Section === -->
-        <section id="mywords" class="tab-section">
-            <div class="section-header">
-                <h2>My Words</h2>
-            </div>
+        <section id="challenge" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Daily Challenge</h2><p class="section-desc">A new timed challenge every day!</p></div>
+            <div id="challenge-container"></div>
+        </section>
+        <section id="mywords" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>My Words</h2></div>
             <div class="sub-tabs">
                 <button class="sub-tab-btn active" data-subtab="learned">Learned <span id="learned-count" class="count-badge">0</span></button>
                 <button class="sub-tab-btn" data-subtab="bookmarked">Bookmarked <span id="bookmarked-count" class="count-badge">0</span></button>
             </div>
             <div id="learned-list" class="word-list sub-tab-content active"></div>
             <div id="bookmarked-list" class="word-list sub-tab-content"></div>
-            <div id="mywords-empty" class="empty-state" style="display:none;">
-                <p>No words yet! Start learning from Today's Words tab.</p>
-            </div>
+            <div id="mywords-empty" class="empty-state" style="display:none;"><p>No words yet! Start learning from Today's Words tab.</p></div>
         </section>
-
-        <!-- === Stats Section === -->
-        <section id="stats" class="tab-section">
-            <div class="section-header">
-                <h2>Your Progress</h2>
-            </div>
+        <section id="stats" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Your Progress</h2></div>
+            <div class="weekly-section"><h3>This Week</h3><div id="weekly-summary"></div></div>
             <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-learned">0</span>
-                    <span class="stat-label">Words Learned</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-streak">0</span>
-                    <span class="stat-label">Day Streak</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-longest">0</span>
-                    <span class="stat-label">Longest Streak</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-quizzes">0</span>
-                    <span class="stat-label">Quizzes Taken</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-accuracy">0%</span>
-                    <span class="stat-label">Quiz Accuracy</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-bookmarks">0</span>
-                    <span class="stat-label">Bookmarked</span>
-                </div>
+                <div class="stat-card"><span class="stat-value" id="stat-learned">0</span><span class="stat-label">Words Learned</span></div>
+                <div class="stat-card"><span class="stat-value" id="stat-streak">0</span><span class="stat-label">Day Streak</span></div>
+                <div class="stat-card"><span class="stat-value" id="stat-longest">0</span><span class="stat-label">Longest Streak</span></div>
+                <div class="stat-card"><span class="stat-value" id="stat-quizzes">0</span><span class="stat-label">Quizzes Taken</span></div>
+                <div class="stat-card"><span class="stat-value" id="stat-accuracy">0%</span><span class="stat-label">Quiz Accuracy</span></div>
+                <div class="stat-card"><span class="stat-value" id="stat-bookmarks">0</span><span class="stat-label">Bookmarked</span></div>
             </div>
-            <div class="history-section">
-                <h3>Word History</h3>
-                <div id="wotd-history" class="history-list"></div>
-                <div id="history-empty" class="empty-state" style="display:none;">
-                    <p>No history yet. Come back daily to build your vocabulary!</p>
-                </div>
-            </div>
+            <div id="srs-stats" style="margin-bottom:16px;"></div>
+            <div class="achievements-section"><h3>Achievements</h3><div id="achievements-grid" class="achievements-grid"></div></div>
+            <div class="history-section"><h3>Word History</h3><div id="wotd-history" class="history-list"></div><div id="history-empty" class="empty-state" style="display:none;"><p>No history yet. Come back daily!</p></div></div>
         </section>
-
+        <section id="settings" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Settings</h2><p class="section-desc">Manage data, custom words &amp; backups</p></div>
+            <div id="settings-container"></div>
+        </section>
     </main>
-
-    <!-- Word Detail Modal -->
-    <div id="word-modal" class="modal" style="display:none;">
+    <div id="word-modal" class="modal" role="dialog" aria-modal="true" style="display:none;">
         <div class="modal-overlay"></div>
         <div class="modal-content">
-            <button class="modal-close" id="modal-close">&times;</button>
+            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
             <div id="modal-body"></div>
         </div>
     </div>
-
-    <!-- Scripts (dependency order) -->
     <script src="words.js"></script>
     <script src="slang.js"></script>
+    <script src="idioms.js"></script>
     <script src="storage.js"></script>
     <script src="api.js"></script>
     <script src="tts.js"></script>
     <script src="chat.js"></script>
     <script src="quiz.js"></script>
+    <script src="spaced-repetition.js"></script>
+    <script src="achievements.js"></script>
+    <script src="search.js"></script>
+    <script src="voice-input.js"></script>
+    <script src="daily-challenge.js"></script>
+    <script src="data-manager.js"></script>
     <script src="app.js"></script>
-
-    <!-- Register Service Worker for offline support -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('SW registered:', reg.scope))
-                    .catch(err => console.log('SW registration failed:', err));
+                navigator.serviceWorker.register('/sw.js').then(r => console.log('SW:', r.scope)).catch(e => console.log('SW fail:', e));
             });
         }
     </script>
