@@ -220,16 +220,25 @@ window.DictionaryAPI = {
         "witness","wonder","worship","worthy","wound","wreck","yield","youth","zone","zeal"
     ],
 
+    DATAMUSE_BASE: 'https://api.datamuse.com/words',
+
     async lookup(word) {
         try {
             const response = await fetch(this.API_BASE + encodeURIComponent(word));
             if (!response.ok) throw new Error('API error');
             const data = await response.json();
             const normalized = this._normalizeApiResponse(data[0]);
-            // Merge built-in context if available
+            // Merge built-in data (context, synonyms, antonyms) if available
             const builtIn = this._findInBuiltIn(word);
-            if (builtIn && builtIn.context) {
-                normalized.context = builtIn.context;
+            if (builtIn) {
+                if (builtIn.context) normalized.context = builtIn.context;
+                this._mergeBuiltInSynAnt(normalized, builtIn);
+            }
+            // Enrich with Datamuse thesaurus data if synonyms/antonyms are still missing
+            await this._enrichWithThesaurus(normalized);
+            // Auto-generate context if still missing
+            if (!normalized.context) {
+                normalized.context = this._generateContext(normalized);
             }
             return normalized;
         } catch {
@@ -347,6 +356,66 @@ window.DictionaryAPI = {
             context: null,
             sourceUrls: apiEntry.sourceUrls || []
         };
+    },
+
+    async _fetchThesaurusData(word) {
+        const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms));
+        try {
+            const [synRes, antRes] = await Promise.all([
+                Promise.race([fetch(`${this.DATAMUSE_BASE}?rel_syn=${encodeURIComponent(word)}&max=5`), timeout(3000)]),
+                Promise.race([fetch(`${this.DATAMUSE_BASE}?rel_ant=${encodeURIComponent(word)}&max=5`), timeout(3000)])
+            ]);
+            const synData = synRes.ok ? await synRes.json() : [];
+            const antData = antRes.ok ? await antRes.json() : [];
+            return {
+                synonyms: synData.map(d => d.word).slice(0, 5),
+                antonyms: antData.map(d => d.word).slice(0, 5)
+            };
+        } catch {
+            return { synonyms: [], antonyms: [] };
+        }
+    },
+
+    async _enrichWithThesaurus(normalized) {
+        const allSyn = (normalized.meanings || []).flatMap(m => m.synonyms || []);
+        const allAnt = (normalized.meanings || []).flatMap(m => m.antonyms || []);
+        if (allSyn.length > 0 && allAnt.length > 0) return;
+
+        const thesaurus = await this._fetchThesaurusData(normalized.word);
+        if (normalized.meanings && normalized.meanings.length > 0) {
+            const first = normalized.meanings[0];
+            if (allSyn.length === 0 && thesaurus.synonyms.length > 0) {
+                first.synonyms = [...new Set([...first.synonyms, ...thesaurus.synonyms])].slice(0, 5);
+            }
+            if (allAnt.length === 0 && thesaurus.antonyms.length > 0) {
+                first.antonyms = [...new Set([...first.antonyms, ...thesaurus.antonyms])].slice(0, 5);
+            }
+        }
+    },
+
+    _generateContext(normalized) {
+        if (!normalized.meanings || normalized.meanings.length === 0) return null;
+        const m = normalized.meanings[0];
+        const pos = m.partOfSpeech || '';
+        const def = (m.definitions && m.definitions[0] && m.definitions[0].definition) || '';
+        if (!def) return null;
+        const shortDef = def.length > 100 ? def.slice(0, 97) + '...' : def;
+        const posLabel = pos.charAt(0).toUpperCase() + pos.slice(1);
+        return `${posLabel}. ${shortDef}`;
+    },
+
+    _mergeBuiltInSynAnt(normalized, builtIn) {
+        if (!builtIn.meanings || !normalized.meanings) return;
+        for (const bm of builtIn.meanings) {
+            const target = normalized.meanings.find(m => m.partOfSpeech === bm.partOfSpeech) || normalized.meanings[0];
+            if (!target) continue;
+            if ((!target.synonyms || target.synonyms.length === 0) && bm.synonyms && bm.synonyms.length > 0) {
+                target.synonyms = [...new Set([...(target.synonyms || []), ...bm.synonyms])].slice(0, 5);
+            }
+            if ((!target.antonyms || target.antonyms.length === 0) && bm.antonyms && bm.antonyms.length > 0) {
+                target.antonyms = [...new Set([...(target.antonyms || []), ...bm.antonyms])].slice(0, 5);
+            }
+        }
     },
 
     _findInBuiltIn(word) {

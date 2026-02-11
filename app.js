@@ -226,8 +226,8 @@ window.App = {
             html += `<div class="definition-item"><div class="definition-text">${this._esc(d.definition)}</div>${d.example ? `<div class="definition-example">"${this._esc(d.example)}"</div>` : ''}</div>`;
         }));
         html += '</div>';
-        const allSynonyms = (w.meanings || []).flatMap(m => m.synonyms || []).slice(0, 5);
-        const allAntonyms = (w.meanings || []).flatMap(m => m.antonyms || []).slice(0, 5);
+        const allSynonyms = [...new Set((w.meanings || []).flatMap(m => m.synonyms || []))].slice(0, 5);
+        const allAntonyms = [...new Set((w.meanings || []).flatMap(m => m.antonyms || []))].slice(0, 5);
         if (allSynonyms.length > 0 || allAntonyms.length > 0) {
             html += '<div class="word-meta">';
             if (allSynonyms.length > 0) html += `<div class="meta-group"><span class="meta-label">Synonyms</span><span class="meta-value">${allSynonyms.map(s => this._esc(s)).join(', ')}</span></div>`;
