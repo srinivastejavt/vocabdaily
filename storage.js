@@ -8,7 +8,8 @@ window.Storage = {
         HISTORY: 'vocabDaily_history',
         QUIZ_STATS: 'vocabDaily_quizStats',
         THEME: 'vocabDaily_theme',
-        LAST_VISIT: 'vocabDaily_lastVisit'
+        LAST_VISIT: 'vocabDaily_lastVisit',
+        ACCENT_TUTOR: 'vocabDaily_accentTutor'
     },
 
     // --- Helpers ---

@@ -4,13 +4,15 @@ window.App = {
     currentTab: 'wotd',
     todayWords: [],
     touchStartX: 0,
-    tabOrder: ['wotd', 'practice', 'ukus', 'chatpractice', 'challenge', 'mywords', 'stats', 'settings'],
+    tabOrder: ['wotd', 'practice', 'ukus', 'genslang', 'accenttutor', 'chatpractice', 'challenge', 'mywords', 'stats', 'settings'],
 
     async init() {
         this.initTheme();
         this.initNavigation();
         this.initSubTabs();
         this.initUKUSSubTabs();
+        this.initGenSlangSubTabs();
+        this.initAccentTutorSubTabs();
         this.initQuizSelector();
         this.initModal();
         this.initSearch();
@@ -65,6 +67,8 @@ window.App = {
         if (tabName === 'mywords') this.renderMyWords();
         if (tabName === 'stats') this.renderStats();
         if (tabName === 'ukus') { const active = document.querySelector('.ukus-sub-btn.active'); this.renderUKUS(active ? active.getAttribute('data-ukus-tab') : 'us-slang'); }
+        if (tabName === 'genslang') { const active = document.querySelector('.genslang-sub-btn.active'); this.renderGenSlang(active ? active.getAttribute('data-gen-tab') : 'gen-z'); }
+        if (tabName === 'accenttutor') { const active = document.querySelector('.accent-sub-btn.active'); this.renderAccentTutor(active ? active.getAttribute('data-accent-tab') : 'learn'); }
         if (tabName === 'chatpractice') this.renderChatPractice();
         if (tabName === 'challenge') this.renderChallenge();
         if (tabName === 'settings') this.renderSettings();
@@ -407,6 +411,130 @@ window.App = {
             });
         });
     },
+    // --- Slang by Era Section ---
+    initGenSlangSubTabs() {
+        document.querySelectorAll('.genslang-sub-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.getAttribute('data-gen-tab');
+                document.querySelectorAll('.genslang-sub-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.renderGenSlang(tab);
+            });
+        });
+    },
+    renderGenSlang(tab) {
+        const container = document.getElementById('genslang-content');
+        if (!container) return;
+        switch (tab) {
+            case 'gen-z': this._renderGenSlangList(container, GEN_SLANG_DATA.genZ, 'gen-z', 'Gen Z'); break;
+            case 'gen-alpha': this._renderGenSlangList(container, GEN_SLANG_DATA.genAlpha, 'gen-alpha', 'Gen Alpha'); break;
+            case 'corporate': this._renderGenSlangList(container, GEN_SLANG_DATA.corporate, 'corporate', 'Corporate'); break;
+            case 'millennial': this._renderGenSlangList(container, GEN_SLANG_DATA.millennialGenX, 'millennial', 'Millennial & Gen X'); break;
+            case 'gen-compare': this._renderGenCompare(container); break;
+            case 'gen-realtalk': this._renderGenRealTalk(container); break;
+        }
+    },
+    _renderGenSlangList(container, slangArr, genClass, label) {
+        if (typeof GEN_SLANG_DATA === 'undefined' || !slangArr) { container.innerHTML = '<p>Loading...</p>'; return; }
+        const icons = { 'gen-z': '\uD83D\uDCF1', 'gen-alpha': '\uD83E\uDDE0', 'corporate': '\uD83D\uDCBC', 'millennial': '\uD83D\uDCFC' };
+        const icon = icons[genClass] || '';
+        const all = slangArr;
+        const { items: daily } = this._getDailySubset(all, 8, 'gen-' + genClass);
+        const key = 'showAll_' + genClass;
+        const showingAll = container.dataset[key] === 'true';
+        const displayItems = showingAll ? all : daily;
+        container.innerHTML = `<div class="daily-rotation-info">Showing ${displayItems.length} of ${all.length} ${label} slang terms${showingAll ? '' : " (today's selection)"}</div>` +
+            displayItems.map(s => `<div class="slang-card"><div class="slang-word-row"><div class="slang-word">${icon} ${this._esc(s.word)}</div><button class="btn-tts" data-text="${this._esc(s.word)}" data-accent="us" title="Listen" aria-label="Listen to ${s.word}">&#x1F50A;</button></div>
+                <div class="slang-meaning">${this._esc(s.meaning)}</div><div class="slang-example-row"><div class="slang-example">"${this._esc(s.example)}"</div><button class="btn-tts btn-tts-sm" data-text="${this._esc(s.example)}" data-accent="us" title="Listen" aria-label="Listen to example">&#x1F50A;</button></div>
+                <div class="slang-meta"><span class="slang-tag ${genClass}">${this._esc(label)}</span>${s.level ? `<span class="slang-tag">${this._esc(s.level)}</span>` : ''}</div>
+                ${s.origin ? `<div class="slang-origin"><strong>Origin:</strong> ${this._esc(s.origin)}</div>` : ''}${s.usage ? `<div class="slang-usage">\uD83D\uDCA1 ${this._esc(s.usage)}</div>` : ''}</div>`).join('') +
+            `<div style="text-align:center;margin:20px 0;"><button class="btn-show-all" id="gen-toggle-${genClass}">${showingAll ? "Show Today's Selection" : 'Show All ' + all.length + ' Terms'}</button></div>`;
+        this._attachTTSButtons(container);
+        const toggleId = 'gen-toggle-' + genClass;
+        container.querySelector('#' + toggleId).addEventListener('click', () => {
+            container.dataset[key] = showingAll ? 'false' : 'true';
+            this._renderGenSlangList(container, slangArr, genClass, label);
+        });
+    },
+    _renderGenCompareCard(c) {
+        return `<div class="compare-card">
+            <div class="compare-concept">${this._esc(c.concept)}</div>
+            <div class="gen-compare-grid">
+                <div class="compare-col compare-genz"><div class="compare-region">\uD83D\uDCF1 GEN Z</div>
+                    <div class="compare-terms">${this._esc(c.genZ.terms)}</div>
+                    <div class="compare-example">"${this._esc(c.genZ.example)}"</div></div>
+                <div class="compare-col compare-genalpha"><div class="compare-region">\uD83E\uDDE0 GEN ALPHA</div>
+                    <div class="compare-terms">${this._esc(c.genAlpha.terms)}</div>
+                    <div class="compare-example">"${this._esc(c.genAlpha.example)}"</div></div>
+                <div class="compare-col compare-corporate"><div class="compare-region">\uD83D\uDCBC CORPORATE</div>
+                    <div class="compare-terms">${this._esc(c.corporate.terms)}</div>
+                    <div class="compare-example">"${this._esc(c.corporate.example)}"</div></div>
+                <div class="compare-col compare-millennial"><div class="compare-region">\uD83D\uDCFC MILLENNIAL</div>
+                    <div class="compare-terms">${this._esc(c.millennialGenX.terms)}</div>
+                    <div class="compare-example">"${this._esc(c.millennialGenX.example)}"</div></div>
+            </div>
+            ${c.note ? `<div class="compare-note">\uD83D\uDCA1 ${this._esc(c.note)}</div>` : ''}
+        </div>`;
+    },
+    _renderGenCompare(container) {
+        if (typeof GEN_SLANG_DATA === 'undefined' || !GEN_SLANG_DATA.generationComparisons) { container.innerHTML = '<p>Loading...</p>'; return; }
+        const all = GEN_SLANG_DATA.generationComparisons;
+        const { items: daily } = this._getDailySubset(all, 6, 'gen-compare');
+        const showingAll = container.dataset.showAllGenCompare === 'true';
+        const displayItems = showingAll ? all : daily;
+        container.innerHTML = `<div class="compare-intro"><p>Same concept, different generations — see how each era expresses the same ideas!</p>
+            <div class="daily-rotation-info">Showing ${displayItems.length} of ${all.length} comparisons${showingAll ? '' : " (today's selection)"}</div></div>` +
+            displayItems.map(c => this._renderGenCompareCard(c)).join('') +
+            `<div style="text-align:center;margin:20px 0;">
+                <button class="btn-show-all" id="gen-compare-toggle">${showingAll ? "Show Today's Selection" : 'Show All ' + all.length + ' Comparisons'}</button>
+            </div>`;
+        container.querySelector('#gen-compare-toggle').addEventListener('click', () => {
+            container.dataset.showAllGenCompare = showingAll ? 'false' : 'true';
+            this._renderGenCompare(container);
+        });
+    },
+    _renderGenRealTalk(container) {
+        if (typeof GEN_SLANG_DATA === 'undefined' || !GEN_SLANG_DATA.conversationExamples) { container.innerHTML = '<p>Loading...</p>'; return; }
+        const all = GEN_SLANG_DATA.conversationExamples;
+        const { items: daily } = this._getDailySubset(all, 4, 'gen-realtalk');
+        const showingAll = container.dataset.showAllGenRealtalk === 'true';
+        const displayItems = showingAll ? all : daily;
+        container.innerHTML = `<div class="realtalk-intro"><p>Real conversations across generations — from Gen Alpha gaming sessions to corporate standups!</p>
+            <div class="daily-rotation-info">Showing ${displayItems.length} of ${all.length} conversations${showingAll ? '' : " (today's selection)"}</div></div>` +
+            displayItems.map(ex => this._renderRealTalkCard(ex)).join('') +
+            `<div style="text-align:center;margin:20px 0;">
+                <button class="btn-show-all" id="gen-realtalk-toggle">${showingAll ? "Show Today's Selection" : 'Show All ' + all.length + ' Conversations'}</button>
+            </div>`;
+        this._attachTTSButtons(container);
+        container.querySelector('#gen-realtalk-toggle').addEventListener('click', () => {
+            container.dataset.showAllGenRealtalk = showingAll ? 'false' : 'true';
+            this._renderGenRealTalk(container);
+        });
+    },
+
+    // --- Accent Tutor Section ---
+    initAccentTutorSubTabs() {
+        document.querySelectorAll('.accent-sub-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.getAttribute('data-accent-tab');
+                document.querySelectorAll('.accent-sub-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.renderAccentTutor(tab);
+            });
+        });
+    },
+    renderAccentTutor(tab) {
+        const container = document.getElementById('accent-tutor-content');
+        if (!container || typeof AccentTutor === 'undefined') return;
+        switch (tab) {
+            case 'learn': AccentTutor.renderLearn(container); break;
+            case 'speak': AccentTutor.renderSpeak(container); break;
+            case 'shadow': AccentTutor.renderShadow(container); break;
+            case 'quiz': AccentTutor.renderQuiz(container); break;
+        }
+    },
+
+    // --- UK vs US Section ---
     renderUKUS(tab) {
         const container = document.getElementById('ukus-content');
         if (!container) return;

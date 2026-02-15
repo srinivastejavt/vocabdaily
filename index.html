@@ -36,6 +36,8 @@
         <button class="tab-btn active" data-tab="wotd" role="tab">Today's Words</button>
         <button class="tab-btn" data-tab="practice" role="tab">Practice</button>
         <button class="tab-btn" data-tab="ukus" role="tab">UK vs US</button>
+        <button class="tab-btn" data-tab="genslang" role="tab">Slang by Era</button>
+        <button class="tab-btn" data-tab="accenttutor" role="tab">Accent Tutor</button>
         <button class="tab-btn" data-tab="chatpractice" role="tab">Chat</button>
         <button class="tab-btn" data-tab="challenge" role="tab">Challenge</button>
         <button class="tab-btn" data-tab="mywords" role="tab">My Words</button>
@@ -74,6 +76,28 @@
                 <button class="ukus-sub-btn sub-tab-btn" data-ukus-tab="realtalk">Real Talk</button>
             </div>
             <div id="ukus-content" class="ukus-content"></div>
+        </section>
+        <section id="genslang" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Slang by Era</h2><p class="section-desc">How different generations speak — from brain rot to boardroom</p></div>
+            <div class="genslang-sub-tabs sub-tabs">
+                <button class="genslang-sub-btn sub-tab-btn active" data-gen-tab="gen-z">Gen Z</button>
+                <button class="genslang-sub-btn sub-tab-btn" data-gen-tab="gen-alpha">Gen Alpha</button>
+                <button class="genslang-sub-btn sub-tab-btn" data-gen-tab="corporate">Corporate</button>
+                <button class="genslang-sub-btn sub-tab-btn" data-gen-tab="millennial">Millennial &amp; Gen X</button>
+                <button class="genslang-sub-btn sub-tab-btn" data-gen-tab="gen-compare">Compare Eras</button>
+                <button class="genslang-sub-btn sub-tab-btn" data-gen-tab="gen-realtalk">Real Talk</button>
+            </div>
+            <div id="genslang-content" class="genslang-content"></div>
+        </section>
+        <section id="accenttutor" class="tab-section" role="tabpanel">
+            <div class="section-header"><h2>Accent Tutor</h2><p class="section-desc">Practice speaking with American &amp; British accents</p></div>
+            <div class="accent-tutor-sub-tabs sub-tabs">
+                <button class="accent-sub-btn sub-tab-btn active" data-accent-tab="learn">Learn</button>
+                <button class="accent-sub-btn sub-tab-btn" data-accent-tab="speak">Speak</button>
+                <button class="accent-sub-btn sub-tab-btn" data-accent-tab="shadow">Shadow</button>
+                <button class="accent-sub-btn sub-tab-btn" data-accent-tab="quiz">Quiz</button>
+            </div>
+            <div id="accent-tutor-content" class="accent-tutor-content"></div>
         </section>
         <section id="chatpractice" class="tab-section" role="tabpanel">
             <div class="section-header"><h2>Chat Practice</h2><p class="section-desc">Practice using slang in real conversations</p></div>
@@ -122,6 +146,7 @@
     </div>
     <script src="words.js"></script>
     <script src="slang.js"></script>
+    <script src="gen-slang.js"></script>
     <script src="idioms.js"></script>
     <script src="storage.js"></script>
     <script src="api.js"></script>
@@ -132,6 +157,7 @@
     <script src="achievements.js"></script>
     <script src="search.js"></script>
     <script src="voice-input.js"></script>
+    <script src="accent-tutor.js"></script>
     <script src="daily-challenge.js"></script>
     <script src="data-manager.js"></script>
     <script src="app.js"></script>
